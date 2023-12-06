@@ -167,6 +167,10 @@ $(call inherit-product, vendor/mediatek/ims/ims.mk)
 PRODUCT_PACKAGES += \
     android.hardware.light-service.lineage
 
+# Linker config
+PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
+    $(DEVICE_PATH)/configs/linker.config.json
+
 # MediaCas
 PRODUCT_PACKAGES += \
     android.hardware.cas@1.2-service-lazy
