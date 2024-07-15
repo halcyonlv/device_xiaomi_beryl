@@ -78,6 +78,9 @@ PRODUCT_PACKAGES += \
     android.hardware.boot-service.default_recovery
 
 # Audio
+TARGET_EXCLUDES_AUDIOFX := true
+
+$(call soong_config_set,android_hardware_audio,run_64bit,true)
 PRODUCT_PACKAGES += \
     audio.primary.default \
     audio.bluetooth.default \
@@ -106,6 +109,10 @@ PRODUCT_PACKAGES += \
     libvirtualizersw \
     libvisualizeraidl \
     libvolumesw
+
+# Dolby
+PRODUCT_PACKAGES += \
+    XiaomiDolby
 
 PRODUCT_PACKAGES += \
     MtkInCallService \

@@ -6,6 +6,9 @@ init_daemon_domain(hal_dms_default)
 
 binder_call(hal_dms_default, hal_audio_default)
 
+add_service(hal_dms_default, hal_dms_aidl_service)
+allow hal_dms_default servicemanager:binder { call transfer };
+
 type vendor_dolby_file, data_file_type, file_type;
 allow hal_dms_default vendor_dolby_file:dir rw_dir_perms;
 allow hal_dms_default vendor_dolby_file:file create_file_perms;
