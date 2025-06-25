@@ -167,7 +167,9 @@ blob_fixups: blob_fixups_user_type = {
     'system_ext/lib64/libsource.so': blob_fixup()
     .add_needed('libui_shim.so'),
     'vendor/lib64/libdlbdsservice.so': blob_fixup()
-    .replace_needed("libstagefright_foundation.so", "libstagefright_foundation-v33.so")
+    .replace_needed("libstagefright_foundation.so", "libstagefright_foundation-v33.so"),
+    'vendor/bin/hw/mtkfusionrild': blob_fixup()
+        .add_needed('libutils-v32.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
