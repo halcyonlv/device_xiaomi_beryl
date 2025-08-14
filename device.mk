@@ -100,6 +100,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
  PRODUCT_PACKAGES += \
+    android.hardware.bluetooth-service.mediatek \
     android.hardware.bluetooth.audio-impl:64
 
 # Boot control (A/B Updates)
