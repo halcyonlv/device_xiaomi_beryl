@@ -198,3 +198,5 @@ WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 
 # Inherit the proprietary files
 include vendor/xiaomi/beryl/BoardConfigVendor.mk
+
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive

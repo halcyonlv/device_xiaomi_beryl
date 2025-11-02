@@ -99,8 +99,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml
 
 # Bluetooth
-PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.1-mtk-service \
+ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio-impl:64
 
 # Boot control (A/B Updates)
@@ -111,7 +110,6 @@ PRODUCT_PACKAGES += \
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.3-service \
-    android.hardware.memtrack-service.mediatek \
     android.software.vulkan.deqp.level-2021-03-01.prebuilt.xml \
     android.software.opengles.deqp.level-2021-03-01.prebuilt.xml
 
@@ -138,19 +136,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
 
-# IMS
-PRODUCT_BOOT_JARS += \
-    mediatek-common \
-    mediatek-ims-base \
-    mediatek-ims-common \
-    mediatek-framework \
-    mediatek-telecom-common \
-    mediatek-telephony-base \
-    mediatek-telephony-common \
-    mediatek-ims-extension-plugin
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/permissions/privapp-permissions-com.mediatek.ims.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-com.mediatek.ims.xml \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml \
     frameworks/native/data/etc/android.software.ipsec_tunnel_migration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnel_migration.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml \
