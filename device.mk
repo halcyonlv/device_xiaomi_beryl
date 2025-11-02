@@ -168,6 +168,13 @@ PRODUCT_PACKAGES += \
     android.hardware.health-service.mediatek \
     android.hardware.health-service.mediatek-recovery
 
+# IFAA manager
+PRODUCT_PACKAGES += \
+    IFAAService
+
+# IMS
+$(call inherit-product, vendor/mediatek/ims/ims.mk)
+
 # Light
 PRODUCT_PACKAGES += \
     android.hardware.light-service.lineage

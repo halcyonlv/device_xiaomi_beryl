@@ -114,6 +114,16 @@ ro.lmk.use_minfree_levels=false
 ro.lmk.thrashing_limit_decay=50
 ro.lmk.downgrade_pressure=30
 
+# IMS
+persist.vendor.anr.enhancement=0
+persist.vendor.mtk_ct_volte_support=3
+persist.vendor.mtk_dynamic_ims_switch=1
+persist.vendor.mtk_wfc_support=1
+persist.vendor.mtk.volte.enable=1
+persist.vendor.viwifi_support=1
+ro.vendor.md_auto_setup_ims=1
+ro.vendor.mtk_data_config=1
+
 # Media
 debug.stagefright.c2inputsurface=-1
 debug.mediatek.appgamepq_compress=1
