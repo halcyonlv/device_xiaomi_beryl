@@ -23,6 +23,6 @@ PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="missi-user 15 AP3A.240905.015.A2 OS2.0.3.0.VOQTWXM release-keys" \
-    BuildFingerprint=Redmi/citrine_global/citrine:14/SP1A.210812.016/OS2.0.3.0.VOQTWXM:user/release-keys
+    BuildDesc="missi-user 15 AP3A.240905.015.A2 OS2.0.207.0.VOQMIXM release-keys" \
+    BuildFingerprint=Redmi/citrine_global/citrine:14/SP1A.210812.016/OS2.0.207.0.VOQMIXM:user/release-keys
 

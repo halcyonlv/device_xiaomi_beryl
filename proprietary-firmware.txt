@@ -1,4 +1,4 @@
-# Firmware from OS2.0.3.0.VOQTWXM
+# Firmware from OS2.0.207.0.VOQMIXM
 dpm.img;AB
 gz.img;AB
 lk.img;AB
