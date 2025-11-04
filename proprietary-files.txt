@@ -1954,8 +1954,12 @@ vendor/etc/camera/beauty_config_gl.json
 vendor/etc/camera/dof_mecp/dof_mecp.bin
 vendor/etc/camera/eis/O17_f16M_w50M_i.bin
 vendor/etc/camera/eis/O17_f16M_w50M_ii.bin
+vendor/etc/camera/eis/O17_f16M_w50M_ii_ITS.bin
+vendor/etc/camera/eis/O17_f16M_w50M_i_ITS.bin
 vendor/etc/camera/eis/O17_f20M_w108M_u8M_i.bin
 vendor/etc/camera/eis/O17_f20M_w108M_u8M_ii.bin
+vendor/etc/camera/eis/O17_f20M_w108M_u8M_ii_ITS.bin
+vendor/etc/camera/eis/O17_f20M_w108M_u8M_i_ITS.bin
 vendor/etc/camera/golden/dualcamGolden_108M+8M_1/dualcam_cali_golden.bin
 vendor/etc/camera/golden/dualcamGolden_108M+8M_2/dualcam_cali_golden.bin
 vendor/etc/camera/golden/dualcamGolden_50M+2M_1/dualcam_cali_golden.bin
