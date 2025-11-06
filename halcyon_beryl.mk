@@ -9,7 +9,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/halcyon/config/common.mk)
+
+
+# Extra Stuff
+TARGET_ENABLE_BLUR := true
+PRODUCT_NO_CAMERA := false
+
 
 # Inherit from beryl device
 $(call inherit-product, device/xiaomi/beryl/device.mk)
