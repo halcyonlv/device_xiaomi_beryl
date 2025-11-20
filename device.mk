@@ -7,6 +7,10 @@
 # Enforce generic ramdisk allow list
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 
+DEVICE_PATH := device/xiaomi/beryl
+KERNEL_PATH := $(DEVICE_PATH)-kernel
+COMMON_GKI_PATH := device/millennium/common-kernel
+
 # Project ID Quota
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
