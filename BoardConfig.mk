@@ -7,6 +7,9 @@
 DEVICE_PATH := device/xiaomi/beryl
 KERNEL_PATH := device/xiaomi/beryl-kernel
 
+# Board Info
+TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-2a-dotprod
