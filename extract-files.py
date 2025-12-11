@@ -122,7 +122,8 @@ blob_fixups: blob_fixups_user_type = {
     "vendor/lib64/hw/mt6855/vendor.mediatek.hardware.pq@2.15-impl.so": blob_fixup()
     .patchelf_version(patchelf_version)
     .add_needed("android.hardware.sensors@1.0-convert-shared.so")
-    .replace_needed("libutils.so", "libutils-v32.so"),
+    .replace_needed("libutils.so", "libutils-v32.so")
+    .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
     (
         'vendor/lib64/libmorpho_Ldc.so',
         'vendor/lib64/libTrueSight.so',
@@ -170,6 +171,11 @@ blob_fixups: blob_fixups_user_type = {
     .replace_needed("libstagefright_foundation.so", "libstagefright_foundation-v33.so"),
     'vendor/bin/hw/mtkfusionrild': blob_fixup()
         .add_needed('libutils-v32.so'),
+    ('vendor/lib64/hw/audio.primary.mediatek.so',
+     'vendor/lib/hw/audio.primary.mediatek.so',
+     'vendor/lib64/librt_extamp_intf.so',
+     'vendor/lib/librt_extamp_intf.so'): blob_fixup()
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
