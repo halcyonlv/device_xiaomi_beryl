@@ -27,7 +27,6 @@ namespace_imports = [
     'device/xiaomi/beryl',
     "hardware/mediatek",
     "hardware/mediatek/libmtkperf_client",
-    "hardware/lineage/compat",
     "hardware/xiaomi"
 ]
 
