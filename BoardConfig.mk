@@ -6,7 +6,6 @@
 
 DEVICE_PATH := device/xiaomi/beryl
 KERNEL_PATH := device/xiaomi/beryl-kernel
-COMMON_GKI_PATH := device/millennium/common-kernel
 
 # Board Info
 TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
@@ -71,9 +70,9 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 TARGET_NO_KERNEL_OVERRIDE := true
 
 # Workaround to make lineage's soong generator work
-TARGET_KERNEL_SOURCE := $(COMMON_GKI_PATH)/kernel-headers
+TARGET_KERNEL_SOURCE := device/xiaomi/beryl-kernel/kernel-headers
 
-LOCAL_KERNEL := $(COMMON_GKI_PATH)/chihiro/Image.gz
+LOCAL_KERNEL := $(KERNEL_PATH)/Image.gz
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
