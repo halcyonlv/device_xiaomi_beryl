@@ -209,7 +209,7 @@ ODM_MANIFEST_O17GL_FILES := $(DEVICE_PATH)/configs/vintf/sku/manifest_o17gl.xml
 ODM_MANIFEST_O17PGL_FILES := $(DEVICE_PATH)/configs/vintf/sku/manifest_o17pgl.xml
 
 # Vibrator
-$(call soong_config_set,mediatek_vibrator,supports_effects,true)
+$(call soong_config_set_bool,mediatek_vibrator,supports_effects,true)
 
 # Wi-Fi
 BOARD_WLAN_DEVICE := MediaTek
