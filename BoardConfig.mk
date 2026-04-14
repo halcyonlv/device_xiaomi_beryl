@@ -186,7 +186,7 @@ SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
 
 
 # Vibrator
-$(call soong_config_set,mediatek_vibrator,supports_effects,true)
+$(call soong_config_set_bool,mediatek_vibrator,supports_effects,true)
 
 # Wi-Fi
 BOARD_WLAN_DEVICE := MediaTek
