@@ -1,0 +1,15 @@
+# fastboot-info for halcyon_beryl
+version 1
+flash boot
+flash dtbo
+flash vendor_boot
+flash --apply-vbmeta vbmeta
+reboot fastboot
+update-super
+flash system
+flash system_ext
+flash vendor
+flash product
+flash vendor_dlkm
+if-wipe erase userdata
+if-wipe erase metadata
