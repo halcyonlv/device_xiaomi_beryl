@@ -170,7 +170,8 @@ PRODUCT_COPY_FILES += \
 
 # FM Radio
 PRODUCT_PACKAGES += \
-    FMRadio
+    RevampedFMRadio \
+    libmtkfmjni
 
 # Health
 PRODUCT_PACKAGES += \
