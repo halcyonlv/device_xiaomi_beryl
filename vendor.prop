@@ -134,7 +134,14 @@ persist.vendor.md_c2k_cap_dep_check=0
 ro.vendor.mtk.c2.vdec.fmt.support.level=2
 ro.vendor.mtk_sec_video_path_support=1
 ro.vendor.mtk_video_hevc_enc_support=1
-vendor.mtk.vdec.waitkeyframeforplay=9
+vendor.mtk.vdec.waitkeyframeforplay=11
+ro.vendor.jpeg_decode_sw_opt=2
+ro.vendor.mtk.c2.vdec.vpp.turnkey.memc=1
+ro.vendor.mtk_hdr_video_support=1
+vendor.media.omx=0
+vendor.mtk.vdec.decode.error.handle.mode=1
+vendor.mtk_thumbnail_optimization=true
+vendor.video.framework.thumbnail.SurfaceMode=1
 
 # Netflix
 ro.netflix.bsp_rev=MTK6855-35905-1
@@ -272,12 +279,21 @@ debug.sf.set_binder_thread_rt=1
 debug.sf.use_phase_offsets_as_durations=1
 ro.surface_flinger.enable_sdr_dimming=true
 persist.sys.sf.color_mode=0
-persist.sys.sf.native_mode=0
+persist.sys.sf.native_mode=258
+ro.surface_flinger.clear_slots_with_set_layer_buffer=false
+ro.surface_flinger.force_hwc_copy_for_virtual_displays=true
 ro.surface_flinger.enable_frame_rate_override=false
 ro.surface_flinger.has_HDR_display=true
+ro.surface_flinger.has_wide_color_display=true
+ro.surface_flinger.ignore_hdr_camera_layers=true
 ro.surface_flinger.protected_contents=true
 ro.surface_flinger.use_color_management=true
 ro.surface_flinger.wcg_composition_dataspace=143261696
+ro.surface_flinger.max_frame_buffer_acquired_buffers=4
+ro.surface_flinger.primary_display_orientation=ORIENTATION_0
+ro.surface_flinger.set_idle_timer_ms=80
+ro.surface_flinger.uclamp.min=328
+debug.sf.enable_egl_image_tracker=0
 
 # Storage
 external_storage.casefold.enabled=1
