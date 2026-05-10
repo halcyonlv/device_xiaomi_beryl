@@ -4,7 +4,7 @@
       "Name": "CPU",
       "Type": "CPU",
       "ZoneName": "soc_max",
-      "HotThreshold": ["NaN", "NaN", "NaN", 85.0, 90.0, 100.0, 117.0],
+      "HotThreshold": ["NaN", "NaN", "NaN", 85.0, 92.0, 100.0, 115.0],
       "VrThreshold": "85.0",
       "Multiplier": 0.001
     },
@@ -12,29 +12,29 @@
       "Name": "GPU",
       "Type": "GPU",
       "ZoneName": "soc_max",
-      "HotThreshold": ["NaN", "NaN", "NaN", 85.0, 90.0, 100.0, 117.0],
+      "HotThreshold": ["NaN", "NaN", "NaN", 85.0, 92.0, 100.0, 115.0],
       "VrThreshold": "85.0",
       "Multiplier": 0.001
     },
     {
       "Name": "battery",
       "Type": "BATTERY",
-      "HotThreshold": ["NaN", "NaN", "NaN", 50.0, 55.0, 59.0, 60.0],
-      "VrThreshold": "50.0",
+      "HotThreshold": ["NaN", "NaN", "NaN", 44.0, 50.0, 55.0, 62.0],
+      "VrThreshold": "44.0",
       "Multiplier": 0.001
     },
     {
       "Name": "ap_ntc",
       "Type": "SKIN",
-      "HotThreshold": ["NaN", "NaN", "NaN", 50.0, 70.0, 80.0, 90.0],
-      "VrThreshold": "50.0",
+      "HotThreshold": ["NaN", "NaN", "NaN", 45.0, 50.0, 55.0, 62.0],
+      "VrThreshold": "45.0",
       "Multiplier": 0.001
     },
     {
       "Name": "NPU",
       "Type": "NPU",
       "ZoneName": "soc_max",
-      "HotThreshold": ["NaN", "NaN", "NaN", 85.0, 90.0, 100.0, 117.0],
+      "HotThreshold": ["NaN", "NaN", "NaN", 85.0, 92.0, 100.0, 115.0],
       "VrThreshold": "NaN",
       "Multiplier": 0.001
     }
