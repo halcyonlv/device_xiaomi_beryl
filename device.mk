@@ -21,7 +21,10 @@ AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS := \
     boot \
     vendor_boot \
+    init_boot \
+    odm_dlkm \
     system \
+    system_dlkm \
     system_ext \
     vendor \
     vendor_dlkm \
