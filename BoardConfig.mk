@@ -68,6 +68,9 @@ PRODUCT_COPY_FILES += \
 BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
 BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/dtb
 
+# Graphics
+TARGET_USES_VULKAN := true
+
 # init_boot image
 AB_OTA_PARTITIONS += \
     init_boot
