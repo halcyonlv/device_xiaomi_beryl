@@ -38,6 +38,12 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "init.insmod.touch.cfg",
+    src: "etc/init.insmod.touch.cfg",
+    vendor: true
+}
+
+prebuilt_etc {
     name: "init.batterysecret.rc",
     src: "etc/init/hw/init.batterysecret.rc",
     sub_dir: "init/hw",

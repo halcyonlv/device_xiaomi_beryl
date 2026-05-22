@@ -69,15 +69,6 @@ PRODUCT_PACKAGES += \
 
 # Audio
 TARGET_EXCLUDES_AUDIOFX := true
-
-$(call soong_config_set,android_hardware_audio,run_64bit,true)
-PRODUCT_PACKAGES += \
-    android.hardware.audio.service \
-    android.hardware.audio@7.0-impl:64 \
-    android.hardware.audio.effect@7.0-impl:64 \
-    audio.bluetooth.default:64 \
-    audio.usb.default:64
-
 PRODUCT_PACKAGES += \
     audio_policy.stub \
     libaudiofoundation.vendor \
@@ -88,7 +79,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     MtkInCallService \
-    XiaomiDolby
 
 # Audio Configuration
 PRODUCT_COPY_FILES += \
@@ -111,12 +101,6 @@ PRODUCT_PACKAGES += \
     com.android.hardware.boot \
     android.hardware.boot-service.default_recovery
 
-# Display
-PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.3-service \
-    android.software.vulkan.deqp.level-2021-03-01.prebuilt.xml \
-    android.software.opengles.deqp.level-2021-03-01.prebuilt.xml
-
 # DRM (Clearkey)
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
@@ -134,9 +118,6 @@ PRODUCT_PACKAGES += \
     libudfpshandler \
     sensors.xiaomi.v2
 
-PRODUCT_PACKAGES += \
-    vendor.xiaomi.hardware.fx.tunnel@1.0.vendor
-
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
 
@@ -152,11 +133,6 @@ PRODUCT_COPY_FILES += \
 # FM Radio
 PRODUCT_PACKAGES += \
     FMRadio
-
-# Gatekeeper
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl:64 \
-    android.hardware.gatekeeper@1.0-service
 
 # Health
 PRODUCT_PACKAGES += \
@@ -194,9 +170,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     Tag
-
-PRODUCT_PACKAGES += \
-    android.hardware.nfc-service.nxp
 
 $(foreach sku, o17gl o17pgl, \
     $(eval PRODUCT_COPY_FILES += \
@@ -295,6 +268,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute.xml \
     frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
+    frameworks/native/data/etc/android.software.vulkan.deqp.level-2023-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
+    frameworks/native/data/etc/android.software.opengles.deqp.level-2023-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.passpoint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.passpoint.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
@@ -312,6 +287,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     init.insmod.sh \
     init.insmod.mt6855.cfg \
+    init.insmod.touch.cfg \
     init.batterysecret.rc \
     init.connectivity.rc \
     init.fingerprint.rc \
@@ -366,7 +342,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/pixel
 
 # Shipping API Level
-PRODUCT_SHIPPING_API_LEVEL := 31
+PRODUCT_SHIPPING_API_LEVEL := 36
 
 # Sku properties
 PRODUCT_COPY_FILES += \

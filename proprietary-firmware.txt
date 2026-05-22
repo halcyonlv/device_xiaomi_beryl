@@ -1,11 +1,11 @@
-# Firmware from OS2.0.207.0.VOQMIXM
+# Firmware from OS3.0.1.0.WOQMIXM
 dpm.img;AB
 gz.img;AB
 lk.img;AB
 mcupm.img;AB
 md1img.img;AB
 pi_img.img;AB
-preloader_beryl.bin:preloader_raw.img;AB|5cd94c9a8ced18265017adc397068db65107f239
+preloader_beryl.bin:preloader_raw.img;AB
 scp.img;AB
 spmfw.img;AB
 sspm.img;AB

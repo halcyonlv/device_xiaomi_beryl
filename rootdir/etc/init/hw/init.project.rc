@@ -1,5 +1,10 @@
 import /vendor/etc/init/hw/init.mtkgki.rc
 
+import /vendor/etc/init/nfc-service-tms.rc
+# NFC init start
+import /vendor/etc/init/${ro.boot.product.hardware.sku}/nfc2-service-nxp.rc
+import /vendor/etc/init/${ro.boot.product.hardware.sku}/android.hardware.secure_element@1.2-service-mediatek.rc
+
 # MTK project .rc configure
 
 on init
@@ -7,7 +12,6 @@ on init
     mkdir /storage/usbotg 0700 root root
 
 on post-fs-data
-
 
 #Thermal
     mkdir /data/vendor/thermal 0771 root system
@@ -45,10 +49,7 @@ on post-fs-data
     chmod 0660 /dev/BU64745GWZAF
     chown system camera /dev/BU64745GWZAF
 
-#Add for tp touchpad
-    mkdir /data/vendor/touchpad 0660 system system
-
-#apois
+#apois 
     mkdir /mnt/vendor/persist 0777 system camera
     mkdir /mnt/vendor/persist/camera 0777 system camera
     mkdir /data/vendor/camera/ 0777 system camera
@@ -56,6 +57,10 @@ on post-fs-data
     chmod +r /mnt/vendor/nvcfg/sensor/gyro_cali.json
     chmod +r /mnt/vendor/nvcfg/sensor/gyro_bias.json
     chmod +r /mnt/vendor/nvcfg/sensor/ois_temp_cali.json
+
+# MIUI ADD: Performance_BoostFramework
+    #chown system system /sys/module/perfhelper/mimd/mimdtrigger
+# END Performance_BoostFramework
 
 #SMB
     chown system system /proc/smb/ScreenComm
@@ -101,11 +106,13 @@ on post-fs-data
     chmod 0777 /vendor/etc/camera/com.xiaomi.dcal.wu.golden
 
 #camerabooster
-    mkdir /odm/etc/camera 0777 system camera
-    copy /vendor/odm/etc/camera/cameraopt.json /odm/etc/camera/cameraopt.json
+    #mkdir /odm/etc/camera 0777 system camera
+    #copy /vendor/etc/camera/cameraopt.json /odm/etc/camera/cameraopt.json
 
 #intsense bokeh use end
 
+#iorap2
+    chown system system /dev/iorap_dev
 
 on init
     # Refer to http://source.android.com/devices/tech/storage/index.html
@@ -118,6 +125,8 @@ on init
     # export SECONDARY_STORAGE /storage/sdcard1
 
 service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbotg /storage/usbotg
+    user system
+    group system
     class late_start
     disabled
 
@@ -128,6 +137,7 @@ on property:sys.boot_completed=1
     write /sys/kernel/tracing/instances/mmstat/buffer_size_kb 16
     write /sys/kernel/tracing/instances/mmstat/events/mmstat/enable 1
     write /sys/kernel/tracing/instances/mmstat/tracing_on 1
+    write /proc/sys/vm/watermark_scale_factor 70
 
 #+ExtR HTH-404417 add by longcheer, 20240512, support single sim
 on property:ro.boot.multisim=ss
@@ -177,7 +187,106 @@ on  property:ro.product.name=citrine_p_global
     write /sys/class/power_supply/battery/country_code 4
 #add for ERP Feature of charge end
 
-on boot
+<<<<<<< HEAD
+on post-fs-data
+# metis
+    chmod 0666 /dev/metis
+    restorecon /dev/metis
+    chown 0666 /sys/module/metis/parameters
+    chmod 0664 /sys/module/metis/parameters/add_rebind_task_lit
+    chmod 0664 /sys/module/metis/parameters/add_rebind_task_mid
+    chmod 0664 /sys/module/metis/parameters/add_rebind_task_big
+    chmod 0664 /sys/module/metis/parameters/del_rebind_task_lit
+    chmod 0664 /sys/module/metis/parameters/del_rebind_task_mid
+    chmod 0664 /sys/module/metis/parameters/del_rebind_task_big
+    chmod 0664 /sys/module/metis/parameters/add_lclus_affinity_uidlist
+    chmod 0664 /sys/module/metis/parameters/del_lclus_affinity_uidlist
+    chmod 0664 /sys/module/metis/parameters/add_mclus_affinity_uidlist
+    chmod 0664 /sys/module/metis/parameters/del_mclus_affinity_uidlist
+    chmod 0664 /sys/module/metis/parameters/add_bclus_affinity_uidlist
+    chmod 0664 /sys/module/metis/parameters/del_bclus_affinity_uidlist
+    chmod 0664 /sys/module/metis/parameters/reset_clus_affinity_uidlist
+    chown root system /sys/module/metis/parameters
+    chown root system /sys/module/metis/parameters/add_rebind_task_lit
+    chown root system /sys/module/metis/parameters/add_rebind_task_mid
+    chown root system /sys/module/metis/parameters/add_rebind_task_big
+    chown root system /sys/module/metis/parameters/del_rebind_task_lit
+    chown root system /sys/module/metis/parameters/del_rebind_task_mid
+    chown root system /sys/module/metis/parameters/del_rebind_task_big
+    chown root system /sys/module/metis/parameters/add_lclus_affinity_uidlist
+    chown root system /sys/module/metis/parameters/del_lclus_affinity_uidlist
+    chown root system /sys/module/metis/parameters/add_mclus_affinity_uidlist
+    chown root system /sys/module/metis/parameters/del_mclus_affinity_uidlist
+    chown root system /sys/module/metis/parameters/add_bclus_affinity_uidlist
+    chown root system /sys/module/metis/parameters/del_bclus_affinity_uidlist
+    chown root system /sys/module/metis/parameters/reset_clus_affinity_uidlist
+    chmod 0666 /dev/metis
+    restorecon /dev/metis
+    chmod 0666 /sys/module/metis/parameters/mi_viptask
+    restorecon /sys/module/metis/parameters/mi_viptask
+    chmod 0666 /sys/module/metis/parameters/mi_viptask_balance
+    restorecon /sys/module/metis/parameters/mi_viptask_balance
+    chmod 0666 /sys/module/metis/parameters/mi_boost_duration
+    restorecon /sys/module/metis/parameters/mi_boost_duration
+    chmod 0666 /sys/class/thermal/thermal_message/boost
+    restorecon /sys/class/thermal/thermal_message/boost
+    chmod 0666 /sys/module/metis/parameters/vip_link_enable
+    restorecon /sys/module/metis/parameters/vip_link_enable
+    chmod 0666 /sys/module/metis/parameters/vip_link_async_binder
+    restorecon /sys/module/metis/parameters/vip_link_async_binder
+    chmod 0666 /sys/module/metis/parameters/mi_fboost_enable
+    restorecon /sys/module/metis/parameters/mi_fboost_enable
+    chmod 0666 /sys/module/metis/parameters/add_mi_viptask_enqueue_boost
+    restorecon /sys/module/metis/parameters/add_mi_viptask_enqueue_boost
+    chmod 0666 /sys/module/metis/parameters/del_mi_viptask_enqueue_boost
+    restorecon /sys/module/metis/parameters/del_mi_viptask_enqueue_boost
+    chmod 0666 /sys/module/metis/parameters/add_mi_viptask_sched_priority
+    restorecon /sys/module/metis/parameters/add_mi_viptask_sched_priority
+    chmod 0666 /sys/module/metis/parameters/del_mi_viptask_sched_priority
+    restorecon /sys/module/metis/parameters/del_mi_viptask_sched_priority
+    chmod 0666 /sys/module/metis/parameters/add_mi_viptask_sched_lit_core
+    restorecon /sys/module/metis/parameters/add_mi_viptask_sched_lit_core
+    chmod 0666 /sys/module/metis/parameters/del_mi_viptask_sched_lit_core
+    restorecon /sys/module/metis/parameters/del_mi_viptask_sched_lit_core
+    chmod 0666 /sys/module/metis/parameters/is_break_enable
+    restorecon /sys/module/metis/parameters/is_break_enable
+    chmod 0777 /sys/module/metis/parameters/minor_window_app
+    restorecon /sys/module/metis/parameters/minor_window_app
+    chmod 0666 /sys/module/metis/parameters/trace_motion_event
+    restorecon /sys/module/metis/parameters/trace_motion_event
+    chown root system /sys/module/metis/parameters/trace_motion_event
+    chmod 0666 /sys/module/metis/parameters/cold_start_app_tgid
+    restorecon /sys/module/metis/parameters/cold_start_app_tgid
+    chmod 0666 /sys/module/metis/parameters/metis_wakeup_enable
+    restorecon /sys/module/metis/parameters/metis_wakeup_enable
+    chmod 0666 /sys/module/metis/parameters/metis_wakeup_task
+    restorecon /sys/module/metis/parameters/metis_wakeup_task
+    chmod 0666 /sys/module/metis/parameters/protect_cs
+    restorecon /sys/module/metis/parameters/protect_cs
+    chmod 0666 /sys/module/metis/parameters/metis_schlat_enable
+    restorecon /sys/module/metis/parameters/metis_schlat_enable
+    chmod 0666 /dev/metis_link
+    restorecon /dev/metis_link
+    chmod 0666 /sys/module/metis/parameters/mi_lock_blocked_pid
+    restorecon /sys/module/metis/parameters/mi_lock_blocked_pid
+    chmod 0666 /sys/module/metis/parameters/stask_prefer_cluster
+    restorecon /sys/module/metis/parameters/stask_prefer_cluster
+    chmod 0666 /sys/module/metis/parameters/render_prefer_cluster
+    restorecon /sys/module/metis/parameters/render_prefer_cluster
+    chmod 0666 /sys/module/metis/parameters/vip_prefer_cluster
+    restorecon /sys/module/metis/parameters/vip_prefer_cluster
+    chmod 0666 /sys/module/metis/parameters/ip_prefer_cluster
+    restorecon /sys/module/metis/parameters/ip_prefer_cluster
+    chmod 0666 /sys/module/metis/parameters/force_forbidden_walt_lb
+    restorecon /sys/module/metis/parameters/force_forbidden_walt_lb
+    chmod 0666 /sys/module/metis/parameters/force_viptask_select_rq
+    restorecon /sys/module/metis/parameters/force_viptask_select_rq
+    chmod 0666 /sys/module/metis/parameters/force_cluster_sched_enable
+    restorecon /sys/module/metis/parameters/force_cluster_sched_enable
+    chmod 0666 /sys/module/metis/parameters/speed_touch_enable
+    restorecon /sys/module/metis/parameters/speed_touch_enable
+    chown root system /sys/module/metis/parameters/speed_touch_enable
+
     # Stop Serial Console
     stop console
 
@@ -201,17 +310,3 @@ service statsd /apex/com.android.os.statsd/bin/statsd
     task_profiles ProcessCapacityHigh HighEnergySaving
     override
     disabled
-
-# NFC
-service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc-service.nxp
-    override
-    class early_hal
-    user nfc
-    group nfc
-    disabled
-
-on boot && property:ro.boot.product.hardware.sku=o17gl
-    enable vendor.nfc_hal_service
-
-on boot && property:ro.boot.product.hardware.sku=o17pgl
-    enable vendor.nfc_hal_service

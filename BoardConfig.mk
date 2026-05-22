@@ -17,20 +17,6 @@ TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_VARIANT := cortex-a76
 TARGET_CPU_VARIANT_RUNTIME := cortex-a76
 
-# Enable 64-bit for non-zygote.
-ZYGOTE_FORCE_64 := true
-
-# Force any prefer32 targets to be compiled as 64 bit.
-IGNORE_PREFER32_ON_DEVICE := true
-
-# Build the 32 bit targets
-TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv8-2a
-TARGET_2ND_CPU_ABI := armeabi-v7a
-TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a55
-TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a55
-
 # OTA Updates
 TARGET_OTA_ASSERT_DEVICE := beryl
 
@@ -46,6 +32,7 @@ TARGET_BOARD_PLATFORM := mt6855
 # Boot image
 BOARD_BOOT_HEADER_VERSION := 4
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
+BOARD_KERNEL_IMAGE_NAME := Image.lz4
 BOARD_RAMDISK_USE_LZ4 := true
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
@@ -73,7 +60,7 @@ TARGET_NO_KERNEL_OVERRIDE := true
 # Workaround to make lineage's soong generator work
 TARGET_KERNEL_SOURCE := device/xiaomi/beryl-kernel/kernel-headers
 
-LOCAL_KERNEL := $(KERNEL_PATH)/Image.gz
+LOCAL_KERNEL := $(KERNEL_PATH)/Image.lz4
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
@@ -136,8 +123,9 @@ BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 
-include vendor/halcyon/config/BoardConfigReservedSize.mk
+include vendor/lineage/config/BoardConfigReservedSize.mk
 
+TARGET_COPY_OUT_ODM := vendor/odm
 TARGET_COPY_OUT_ODM_DLKM := odm_dlkm
 TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext

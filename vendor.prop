@@ -65,9 +65,9 @@ vendor.connsys.driver.ready=no
 ro.crypto.volume.filenames_mode=aes-256-cts
 
 # Dolby
-ro.vendor.audio.device.dbcom=dolby_common
-ro.vendor.dolby.dax.version=DAX3_3.6.0.12_r1
-ro.vendor.audio.dolby.dax.support=true
+# ro.vendor.audio.device.dbcom=dolby_common
+# ro.vendor.dolby.dax.version=DAX3_3.6.0.12_r1
+# ro.vendor.audio.dolby.dax.support=true
 
 # DRM
 drm.service.enabled=true
@@ -89,6 +89,7 @@ debug.graphics.game_default_frame_rate.disabled=true
 graphics.gpu.profiler.support=true
 ro.hardware.egl=meow
 ro.hardware.gralloc=common
+ro.vendor.composer_version=3.4
 ro.hardware.hwcomposer=mtk_common
 ro.hardware.vulkan=mtk
 ro.opengles.version=196610
@@ -126,6 +127,7 @@ ro.vendor.mtk_data_config=1
 
 # Media
 debug.stagefright.c2inputsurface=-1
+media.c2.hal.selection=aidl
 debug.mediatek.appgamepq_compress=1
 debug.mediatek.disp_decompress=1
 media.c2.dmabuf.padding=3072
@@ -142,12 +144,11 @@ ro.netflix.bsp_rev=MTK6855-35905-1
 # Neural networks
 ro.vendor.mtk_nn.option=A,B,C,D,E,F,G,Z
 ro.vendor.mtk_nn_quant_preferred=1
-ro.vendor.mtk_nn_baseline_support=1
 
 # Platform
 ro.vendor.mediatek.platform=MT6855
-ro.vendor.mediatek.version.branch=alps-mp-s0.mp1.tc8sp-cs3
-ro.vendor.mediatek.version.release=alps-mp-s0.mp1.tc8sp-cs3-V1.67_xiaomi.s0mp1.k6855v1.64_P58
+ro.vendor.mediatek.version.branch=alps-mp-s0.mp1.tc8sp2
+ro.vendor.mediatek.version.release=alps-mp-b0.mp1.tc8sp2-V1_xiaomi_P0017
 ro.vendor.mgvi_name=mihal
 
 # Power
@@ -170,6 +171,7 @@ ro.vendor.pq.mtk_disp_color_support=1
 ro.vendor.pq.mtk_disp_game_pq_support=0
 ro.vendor.pq.mtk_disp_gamma_support=1
 ro.vendor.pq.mtk_disp_tdshp_support=1
+ro.vendor.pq.mtk_dre_cap=0
 ro.vendor.pq.mtk_dre30_support=0
 ro.vendor.pq.mtk_ds_support=0
 ro.vendor.pq.mtk_hdr10_plus_recording_support=0
@@ -261,7 +263,6 @@ debug.sf.early.sf.duration=16600000
 debug.sf.enable_gl_backpressure=0
 debug.sf.enable_adpf_cpu_hint=true
 debug.sf.frame_rate_multiple_threshold=120
-
 debug.sf.predict_hwc_composition_strategy=0
 debug.sf.treat_170m_as_sRGB=1
 ro.surface_flinger.use_content_detection_for_refresh_rate=true

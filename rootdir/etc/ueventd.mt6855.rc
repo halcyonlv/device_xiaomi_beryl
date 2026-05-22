@@ -24,6 +24,9 @@
 /dev/block/by-name/md1img    0640    root    system
 /dev/block/by-name/md1img_a  0640    root    system
 /dev/block/by-name/md1img_b  0640    root    system
+/dev/block/by-name/modem_b   0640    root    system
+/dev/block/by-name/modem_a   0640    root    system
+/dev/block/by-name/modem     0640    root    system
 /dev/block/by-name/md1dsp    0660    root    system
 /dev/block/by-name/boot_para 0640    root    system
 
@@ -60,7 +63,7 @@
 /dev/fw_log_wifi          0660   wifi     wifi
 
 # FMRadio
-/dev/fm                   0666   system     system
+/dev/fm                   0660   system     system
 
 # NFC
 /dev/st21nfc              0660   nfc        radio
@@ -96,6 +99,9 @@
 /dev/vdec-fmt   0660 media system
 /dev/fmt_sync   0660 system system
 
+#videogo
+/dev/videogo     0660 media system
+
 #v4l2 camera
 /dev/mtk_hcp     0660 camera system
 
@@ -104,6 +110,9 @@
 
 # MDDP node
 /dev/mddp                 0660   system     system
+
+#sensor
+/dev/hf_manager        0660    system    system
 
 # add the read write right of ttyUSB*
 /dev/bus/usb/*     	  0660   root       usb
@@ -152,13 +161,14 @@
 
 # Camera
 /dev/camera_eeprom*       0660   system     camera
+/dev/camera-pda           0660   system     camera
 
 #FOR VIA MODEM
 /dev/ttySDIO*             0660   radio      sdcard_rw
 /dev/ttyRB*               0660   radio      radio
 
 # Mali node
-/dev/mali                 0666   system     graphics
+/dev/mali0                0666   system     graphics
 
 # Change ION driver permission
 /dev/ion                  0666   system     graphics
@@ -190,6 +200,9 @@
 
 #MTK In-House TEE
 /dev/ttyACM0              0660   radio      radio
+
+#widevine driver node
+/dev/drm_wv    0660    media    system
 
 #ir
 /dev/spidev7.0            0660   system	    system

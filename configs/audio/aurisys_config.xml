@@ -325,8 +325,8 @@
          * =====================================================================
         -->
         <library name="mtk_speech_enh"
-                 lib_path="/vendor/lib/lib_speech_enh.so"
-                 lib64_path="/vendor/lib64/lib_speech_enh.so"
+                 lib_path="/vendor/lib/libmtkspparser.so"
+                 lib64_path="/vendor/lib64/libmtkspparser.so"
                  param_path="/vendor/etc/audio_param"
                  lib_dump_path="AUTO"
                  adb_cmd_key="MTKSE">
@@ -513,10 +513,290 @@
                            enhancement_mode="0">
                     <uplink_process>
                         <buf_in  data_buf_type="DATA_BUF_UPLINK_IN"
-                                 num_channels="2,4"/>
+                                 num_channels="2,4,6"/>
                         <buf_out data_buf_type="DATA_BUF_UPLINK_OUT"
                                  num_channels="2"/>
                     </uplink_process>
+                </component>
+                <!-- for aurisys_scene low latency record -->
+                <component aurisys_scenario="AURISYS_SCENARIO_RECORD_LOW_LATENCY"
+                           sample_rate="16000,32000,48000,96000,192000"
+                           audio_format="AUDIO_FORMAT_PCM_16_BIT"
+                           frame_size_ms="1,5"
+                           b_interleave="0"
+                           enable_log="0"
+                           enable_raw_dump="0"
+                           enable_lib_dump="0"
+                           enhancement_mode="0">
+                    <uplink_process>
+                        <buf_in  data_buf_type="DATA_BUF_UPLINK_IN"
+                                 num_channels="1,2,3"/>
+                        <buf_out data_buf_type="DATA_BUF_UPLINK_OUT"
+                                 num_channels="1,2,3"/>
+                    </uplink_process>
+                </component>
+                <!-- for aurisys_scene record w/o AEC -->
+                <component aurisys_scenario="AURISYS_SCENARIO_RECORD_WITHOUT_AEC"
+                           sample_rate="16000,32000,48000,96000,192000"
+                           audio_format="AUDIO_FORMAT_PCM_16_BIT"
+                           frame_size_ms="20"
+                           b_interleave="0"
+                           enable_log="0"
+                           enable_raw_dump="0"
+                           enable_lib_dump="0"
+                           enhancement_mode="0">
+                    <uplink_process>
+                        <buf_in  data_buf_type="DATA_BUF_UPLINK_IN"
+                                 num_channels="1,2,3"/>
+                        <buf_out data_buf_type="DATA_BUF_UPLINK_OUT"
+                                 num_channels="1,2,3"/>
+                    </uplink_process>
+                </component>
+                <!-- for aurisys_scene record w/ AEC -->
+                <component aurisys_scenario="AURISYS_SCENARIO_RECORD_WITH_AEC"
+                           sample_rate="16000,32000,48000,96000,192000"
+                           audio_format="AUDIO_FORMAT_PCM_16_BIT"
+                           frame_size_ms="20"
+                           b_interleave="0"
+                           enable_log="0"
+                           enable_raw_dump="0"
+                           enable_lib_dump="0"
+                           enhancement_mode="0">
+                    <uplink_process>
+                        <buf_in  data_buf_type="DATA_BUF_UPLINK_IN"
+                                 num_channels="1,2,3"/>
+                        <buf_out data_buf_type="DATA_BUF_UPLINK_OUT"
+                                 num_channels="1,2,3"/>
+                    </uplink_process>
+                </component>
+                <!-- for aurisys_scene low latency record -->
+                <component aurisys_scenario="AURISYS_SCENARIO_RECORD_IEM"
+                           sample_rate="16000,48000"
+                           audio_format="AUDIO_FORMAT_PCM_8_24_BIT"
+                           frame_size_ms="1,5"
+                           b_interleave="0"
+                           enable_log="0"
+                           enable_raw_dump="0"
+                           enable_lib_dump="0"
+                           enhancement_mode="0">
+                    <uplink_process>
+                        <buf_in  data_buf_type="DATA_BUF_UPLINK_IN"
+                                 num_channels="1,2,3"/>
+                        <buf_out data_buf_type="DATA_BUF_UPLINK_OUT"
+                                 num_channels="1,2"/>
+                    </uplink_process>
+                </component>
+                <!-- for aurisys_scene voip -->
+                <component aurisys_scenario="AURISYS_SCENARIO_VOIP"
+                           sample_rate="16000"
+                           audio_format="AUDIO_FORMAT_PCM_16_BIT"
+                           frame_size_ms="20"
+                           b_interleave="0"
+                           enable_log="0"
+                           enable_raw_dump="0"
+                           enable_lib_dump="0"
+                           enhancement_mode="0">
+                    <uplink_process>
+                        <buf_in  data_buf_type="DATA_BUF_UPLINK_IN"
+                                 num_channels="1,2,3"/>
+                        <buf_out data_buf_type="DATA_BUF_UPLINK_OUT"
+                                 num_channels="1"/>
+                        <buf_refs>
+                            <buf_ref data_buf_type="DATA_BUF_ECHO_REF"
+                                     num_channels="1"/>
+                        </buf_refs>
+                    </uplink_process>
+                    <downlink_process>
+                        <buf_in  data_buf_type="DATA_BUF_DOWNLINK_IN"
+                                 num_channels="1"/>
+                        <buf_out data_buf_type="DATA_BUF_DOWNLINK_OUT"
+                                 num_channels="1"/>
+                    </downlink_process>
+                </component>
+                <!-- for aurisys_scene voip w/o AEC -->
+                <component aurisys_scenario="AURISYS_SCENARIO_VOIP_WITHOUT_AEC"
+                           sample_rate="16000"
+                           audio_format="AUDIO_FORMAT_PCM_16_BIT"
+                           frame_size_ms="20"
+                           b_interleave="0"
+                           enable_log="0"
+                           enable_raw_dump="0"
+                           enable_lib_dump="0"
+                           enhancement_mode="0">
+                    <uplink_process>
+                        <buf_in  data_buf_type="DATA_BUF_UPLINK_IN"
+                                 num_channels="1,2,3"/>
+                        <buf_out data_buf_type="DATA_BUF_UPLINK_OUT"
+                                 num_channels="1"/>
+                    </uplink_process>
+                    <downlink_process>
+                        <buf_in  data_buf_type="DATA_BUF_DOWNLINK_IN"
+                                 num_channels="1"/>
+                        <buf_out data_buf_type="DATA_BUF_DOWNLINK_OUT"
+                                 num_channels="1"/>
+                    </downlink_process>
+                </component>
+            </components>
+        </library>
+        <!--
+         * =====================================================================
+         *   Gain Boost
+         * =====================================================================
+        -->
+        <library name="gain_boost"
+                 lib_path="/vendor/lib/libgainboost.so"
+                 lib64_path="/vendor/lib64/libgainboost.so"
+                 param_path="/vendor/etc/audio_param"
+                 lib_dump_path="AUTO"
+                 adb_cmd_key="GAIN_BOOST">
+           <components>
+                <!-- for aurisys_scene record In-ear monitors (IEMs) -->
+                <component aurisys_scenario="AURISYS_SCENARIO_RECORD_IEM"
+                           sample_rate="8000,16000,32000,48000,96000"
+                           audio_format="AUDIO_FORMAT_PCM_16_BIT,AUDIO_FORMAT_PCM_8_24_BIT"
+                           frame_size_ms="1,5"
+                           b_interleave="0"
+                           enable_log="0"
+                           enable_raw_dump="0"
+                           enable_lib_dump="0"
+                           enhancement_mode="0">
+                    <uplink_process>
+                        <buf_in  data_buf_type="DATA_BUF_UPLINK_IN"
+                                 num_channels="1,2,3,4"/>
+                        <buf_out data_buf_type="DATA_BUF_UPLINK_OUT"
+                                 num_channels="1,2,3,4"/>
+                    </uplink_process>
+                </component>
+                <!-- for aurisys_scene HDR record -->
+                <component aurisys_scenario="AURISYS_SCENARIO_HDR_RECORD"
+                           sample_rate="8000,16000,32000,48000,96000"
+                           audio_format="AUDIO_FORMAT_PCM_16_BIT,AUDIO_FORMAT_PCM_8_24_BIT"
+                           frame_size_ms="1,5,20"
+                           b_interleave="0"
+                           enable_log="0"
+                           enable_raw_dump="0"
+                           enable_lib_dump="0"
+                           enhancement_mode="0">
+                    <uplink_process>
+                        <buf_in  data_buf_type="DATA_BUF_UPLINK_IN"
+                                 num_channels="1,2,3,4"/>
+                        <buf_out data_buf_type="DATA_BUF_UPLINK_OUT"
+                                 num_channels="1,2,3,4"/>
+                    </uplink_process>
+                </component>
+                <!-- for aurisys_scene low latency record -->
+                <component aurisys_scenario="AURISYS_SCENARIO_RECORD_LOW_LATENCY"
+                           sample_rate="8000,16000,32000,48000,96000"
+                           audio_format="AUDIO_FORMAT_PCM_16_BIT,AUDIO_FORMAT_PCM_8_24_BIT"
+                           frame_size_ms="1,5"
+                           b_interleave="0"
+                           enable_log="0"
+                           enable_raw_dump="0"
+                           enable_lib_dump="0"
+                           enhancement_mode="0">
+                    <uplink_process>
+                        <buf_in  data_buf_type="DATA_BUF_UPLINK_IN"
+                                 num_channels="1,2,3,4"/>
+                        <buf_out data_buf_type="DATA_BUF_UPLINK_OUT"
+                                 num_channels="1,2,3,4"/>
+                    </uplink_process>
+                </component>
+                <!-- for aurisys_scene record w/o AEC -->
+                <component aurisys_scenario="AURISYS_SCENARIO_RECORD_WITHOUT_AEC"
+                           sample_rate="8000,16000,32000,48000,96000"
+                           audio_format="AUDIO_FORMAT_PCM_16_BIT,AUDIO_FORMAT_PCM_8_24_BIT"
+                           frame_size_ms="20"
+                           b_interleave="0"
+                           enable_log="0"
+                           enable_raw_dump="0"
+                           enable_lib_dump="0"
+                           enhancement_mode="0">
+                    <uplink_process>
+                        <buf_in  data_buf_type="DATA_BUF_UPLINK_IN"
+                                 num_channels="1,2,3,4"/>
+                        <buf_out data_buf_type="DATA_BUF_UPLINK_OUT"
+                                 num_channels="1,2,3,4"/>
+                    </uplink_process>
+                </component>
+                <!-- for aurisys_scene record w/ AEC -->
+                <component aurisys_scenario="AURISYS_SCENARIO_RECORD_WITH_AEC"
+                           sample_rate="8000,16000,32000,48000,96000"
+                           audio_format="AUDIO_FORMAT_PCM_16_BIT,AUDIO_FORMAT_PCM_8_24_BIT"
+                           frame_size_ms="20"
+                           b_interleave="0"
+                           enable_log="0"
+                           enable_raw_dump="0"
+                           enable_lib_dump="0"
+                           enhancement_mode="0">
+                    <uplink_process>
+                        <buf_in  data_buf_type="DATA_BUF_UPLINK_IN"
+                                 num_channels="1,2,3,4"/>
+                        <buf_out data_buf_type="DATA_BUF_UPLINK_OUT"
+                                 num_channels="1,2,3,4"/>
+                    </uplink_process>
+                </component>
+                <!-- for aurisys_scene low latency record -->
+                <component aurisys_scenario="AURISYS_SCENARIO_RECORD_IEM"
+                           sample_rate="8000,16000,32000,48000,96000"
+                           audio_format="AUDIO_FORMAT_PCM_16_BIT,AUDIO_FORMAT_PCM_8_24_BIT"
+                           frame_size_ms="1,5"
+                           b_interleave="0"
+                           enable_log="0"
+                           enable_raw_dump="0"
+                           enable_lib_dump="0"
+                           enhancement_mode="0">
+                    <uplink_process>
+                        <buf_in  data_buf_type="DATA_BUF_UPLINK_IN"
+                                 num_channels="1,2,3,4"/>
+                        <buf_out data_buf_type="DATA_BUF_UPLINK_OUT"
+                                 num_channels="1,2,3,4"/>
+                    </uplink_process>
+                </component>
+                <!-- for aurisys_scene voip -->
+                <component aurisys_scenario="AURISYS_SCENARIO_VOIP"
+                           sample_rate="8000,16000,32000,48000,96000"
+                           audio_format="AUDIO_FORMAT_PCM_16_BIT,AUDIO_FORMAT_PCM_8_24_BIT"
+                           frame_size_ms="20"
+                           b_interleave="0"
+                           enable_log="0"
+                           enable_raw_dump="0"
+                           enable_lib_dump="0"
+                           enhancement_mode="0">
+                    <uplink_process>
+                        <buf_in  data_buf_type="DATA_BUF_UPLINK_IN"
+                                 num_channels="1,2,3,4"/>
+                        <buf_out data_buf_type="DATA_BUF_UPLINK_OUT"
+                                 num_channels="1,2,3,4"/>
+                    </uplink_process>
+                    <downlink_process>
+                        <buf_in  data_buf_type="DATA_BUF_DOWNLINK_IN"
+                                 num_channels="1,2,3,4"/>
+                        <buf_out data_buf_type="DATA_BUF_DOWNLINK_OUT"
+                                 num_channels="1,2,3,4"/>
+                    </downlink_process>
+                </component>
+                <!-- for aurisys_scene voip w/o AEC -->
+                <component aurisys_scenario="AURISYS_SCENARIO_VOIP_WITHOUT_AEC"
+                           sample_rate="8000,16000,32000,48000,96000"
+                           audio_format="AUDIO_FORMAT_PCM_16_BIT,AUDIO_FORMAT_PCM_8_24_BIT"
+                           frame_size_ms="20"
+                           b_interleave="0"
+                           enable_log="0"
+                           enable_raw_dump="0"
+                           enable_lib_dump="0"
+                           enhancement_mode="0">
+                    <uplink_process>
+                        <buf_in  data_buf_type="DATA_BUF_UPLINK_IN"
+                                 num_channels="1,2,3,4"/>
+                        <buf_out data_buf_type="DATA_BUF_UPLINK_OUT"
+                                 num_channels="1,2,3,4"/>
+                    </uplink_process>
+                    <downlink_process>
+                        <buf_in  data_buf_type="DATA_BUF_DOWNLINK_IN"
+                                 num_channels="1,2,3,4"/>
+                        <buf_out data_buf_type="DATA_BUF_DOWNLINK_OUT"
+                                 num_channels="1,2,3,4"/>
+                    </downlink_process>
                 </component>
             </components>
         </library>

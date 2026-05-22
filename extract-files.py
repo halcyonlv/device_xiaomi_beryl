@@ -56,23 +56,14 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
-    "vendor/bin/hw/android.hardware.security.keymint@1.0-service.mitee": blob_fixup()
+    "vendor/bin/hw/android.hardware.security.keymint@3.0-service.mitee": blob_fixup()
     .patchelf_version(patchelf_version)
-    .replace_needed(
-        "android.hardware.security.keymint-V1-ndk_platform.so",
-        "android.hardware.security.keymint-V3-ndk-v34.so",
-    )
-    .add_needed("android.hardware.security.rkp-V3-ndk.so")
-    .replace_needed(
-        *fixup_ndk_platform("android.hardware.security.secureclock-V1-ndk_platform.so")
-    )
-    .replace_needed(
-        *fixup_ndk_platform("android.hardware.security.sharedsecret-V1-ndk_platform.so")
-    ),
-    "vendor/etc/init/android.hardware.graphics.allocator@4.0-service-mediatek.rc": blob_fixup().regex_replace(
-        "android.hardware.graphics.allocator@4.0-service-mediatek",
-        "mt6855/android.hardware.graphics.allocator@4.0-service-mediatek.mt6855",
-    ),
+    .replace_needed('android.hardware.security.keymint-V3-ndk_platform.so', 'android.hardware.security.keymint-V3-ndk-v34.so'),
+    ('vendor/lib64/hw/mt6855/vendor.mediatek.hardware.pq_aidl-impl.so',
+     'vendor/lib64/libpqxmlparser.so',
+     'vendor/lib64/librt_extamp_intf.so',
+     'vendor/lib64/libsilkybrightnesscore.so'): blob_fixup()
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
     (
         "vendor/lib/libwvhidl.so",
         "vendor/lib/mediadrm/libwvdrmengine.so",
@@ -103,10 +94,7 @@ blob_fixups: blob_fixups_user_type = {
     ),
     (
         "vendor/lib64/libteei_daemon_vfs.so",
-        "vendor/lib64/mt6855/lib3a.flash.so",
-        "vendor/lib64/mt6855/lib3a.ae.stat.so",
-        "vendor/lib64/mt6855/lib3a.sensors.color.so",
-        "vendor/lib64/mt6855/lib3a.sensors.flicker.so",
+        "vendor/lib64/mt6855/lib3a.ae.stSat.so",
     ): blob_fixup()
     .patchelf_version(patchelf_version)
     .add_needed("liblog.so"),
@@ -118,11 +106,12 @@ blob_fixups: blob_fixups_user_type = {
     .replace_needed("libutils.so", "libutils-v32.so"),
     "vendor/lib64/libmorpho_video_stabilizer.so": blob_fixup()
     .add_needed("libutils.so"),
-    "vendor/lib64/hw/mt6855/vendor.mediatek.hardware.pq@2.15-impl.so": blob_fixup()
-    .patchelf_version(patchelf_version)
-    .add_needed("android.hardware.sensors@1.0-convert-shared.so")
-    .replace_needed("libutils.so", "libutils-v32.so")
-    .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
+
+    ('vendor/lib64/hw/vendor.mediatek.hardware.pq_aidl-impl.so',
+     'vendor/lib64/libpqxmlparser.so',
+     'vendor/lib64/librt_extamp_intf.so',
+     'vendor/lib64/libsilkybrightnesscore.so'): blob_fixup()
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
     (
         'vendor/lib64/libmorpho_Ldc.so',
         'vendor/lib64/libTrueSight.so',
@@ -151,15 +140,13 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libprocessgroup_shim.so'),
     'vendor/lib64/mt6855/libmnl.so': blob_fixup()
     .add_needed('libcutils.so'),
-    ('vendor/lib64/hw/android.hardware.gnss-impl-mediatek.so', 'vendor/bin/hw/android.hardware.gnss-service.mediatek'): blob_fixup()
-    .replace_needed('android.hardware.gnss-V1-ndk_platform.so', 'android.hardware.gnss-V1-ndk.so'),
     'vendor/bin/mtk_agpsd': blob_fixup()
     .replace_needed('libcrypto.so', 'libcrypto-v33.so')
     .add_needed('libssl.so'),
     'vendor/lib64/mt6855/libmnl.so': blob_fixup()
     .add_needed('libcutils.so'),
-    'system_ext/priv-app/ImsService/ImsService.apk': blob_fixup()
-    .apktool_patch('blob-patches/ImsService.patch', '-r'),
+#    'system_ext/priv-app/ImsService/ImsService.apk': blob_fixup()
+#    .apktool_patch('blob-patches/ImsService.patch', '-r'),
     'system_ext/lib64/libimsma.so': blob_fixup()
     .replace_needed('libsink.so', 'libsink-mtk.so'),
     'system_ext/lib64/libsink-mtk.so': blob_fixup()
@@ -171,9 +158,7 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/bin/hw/mtkfusionrild': blob_fixup()
         .add_needed('libutils-v32.so'),
     ('vendor/lib64/hw/audio.primary.mediatek.so',
-     'vendor/lib/hw/audio.primary.mediatek.so',
-     'vendor/lib64/librt_extamp_intf.so',
-     'vendor/lib/librt_extamp_intf.so'): blob_fixup()
+     'vendor/lib64/librt_extamp_intf.so'): blob_fixup()
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
 }  # fmt: skip
 
@@ -184,7 +169,6 @@ module = ExtractUtilsModule(
     lib_fixups=lib_fixups,
     namespace_imports=namespace_imports,
     check_elf=True,
-    add_firmware_proprietary_file=True,
 )
 
 if __name__ == "__main__":

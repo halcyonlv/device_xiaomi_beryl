@@ -13,14 +13,7 @@ include $(CLEAR_VARS)
 
 # Libraries / Binaries linked to <dir>/<platform>/<lib>.so
 VENDOR_PLATFORM_LINKS := \
-	$(TARGET_OUT_VENDOR)/bin/hw/android.hardware.graphics.allocator@4.0-service-mediatek \
 	$(TARGET_OUT_VENDOR)/bin/hw/camerahalserver \
-	$(TARGET_OUT_VENDOR)/lib/libmtk_drvb.so \
-	$(TARGET_OUT_VENDOR)/lib/libvcodec_utility.so \
-	$(TARGET_OUT_VENDOR)/lib/libvcodec_utility_v3a.so \
-	$(TARGET_OUT_VENDOR)/lib/libvcodecdrv.so \
-	$(TARGET_OUT_VENDOR)/lib/libvcodecdrv_v3a.so \
-	$(TARGET_OUT_VENDOR)/lib/libvpudv3a_vcodec.so \
 	$(TARGET_OUT_VENDOR)/lib64/egl/libEGL_mtk.so \
 	$(TARGET_OUT_VENDOR)/lib64/egl/libGLESv1_CM_mtk.so \
 	$(TARGET_OUT_VENDOR)/lib64/egl/libGLESv2_mtk.so \
@@ -30,16 +23,6 @@ VENDOR_PLATFORM_LINKS := \
 	$(TARGET_OUT_VENDOR)/lib64/gc16b3c_aac_front_i_mipi_raw_india_IdxMgr.so \
 	$(TARGET_OUT_VENDOR)/lib64/gc16b3c_aac_front_i_mipi_raw_india_tuning.so \
 	$(TARGET_OUT_VENDOR)/lib64/gc16b3c_aac_front_i_mipi_raw_tuning.so \
-	$(TARGET_OUT_VENDOR)/lib64/hw/android.hardware.camera.provider@2.6-impl-mediatek.so \
-	$(TARGET_OUT_VENDOR)/lib64/hw/android.hardware.graphics.mapper@4.0-impl-mediatek.so \
-	$(TARGET_OUT_VENDOR)/lib64/hw/gralloc.rogue.so \
-	$(TARGET_OUT_VENDOR)/lib64/hw/vendor.mediatek.hardware.camera.atms@1.0-impl.so \
-	$(TARGET_OUT_VENDOR)/lib64/hw/vendor.mediatek.hardware.camera.bgservice@1.1-impl.so \
-	$(TARGET_OUT_VENDOR)/lib64/hw/vendor.mediatek.hardware.camera.ccap@1.0-impl.so \
-	$(TARGET_OUT_VENDOR)/lib64/hw/vendor.mediatek.hardware.camera.isphal@1.0-impl.so \
-	$(TARGET_OUT_VENDOR)/lib64/hw/vendor.mediatek.hardware.camera.isphal@1.1-impl.so \
-	$(TARGET_OUT_VENDOR)/lib64/hw/vendor.mediatek.hardware.camera.lomoeffect@1.0-impl.so \
-	$(TARGET_OUT_VENDOR)/lib64/hw/vendor.mediatek.hardware.pq@2.15-impl.so \
 	$(TARGET_OUT_VENDOR)/lib64/hw/vulkan.mtk.so \
 	$(TARGET_OUT_VENDOR)/lib64/imx882_aac_main_i_mipi_raw_global_IdxMgr.so \
 	$(TARGET_OUT_VENDOR)/lib64/imx882_aac_main_i_mipi_raw_global_tuning.so \
@@ -76,8 +59,6 @@ VENDOR_PLATFORM_LINKS := \
 	$(TARGET_OUT_VENDOR)/lib64/lib3a.sensors.flicker.so \
 	$(TARGET_OUT_VENDOR)/lib64/libaaa_ltm.so \
 	$(TARGET_OUT_VENDOR)/lib64/libaaa_ltmx.so \
-	$(TARGET_OUT_VENDOR)/lib64/libaal_cust_func.so \
-	$(TARGET_OUT_VENDOR)/lib64/libaalservice.so \
 	$(TARGET_OUT_VENDOR)/lib64/libacdk.so \
 	$(TARGET_OUT_VENDOR)/lib64/libaiawb_moon_model.so \
 	$(TARGET_OUT_VENDOR)/lib64/libaiawb_moon.so \
@@ -237,8 +218,6 @@ VENDOR_PLATFORM_LINKS := \
 	$(TARGET_OUT_VENDOR)/lib64/libpda_usdriver.so \
 	$(TARGET_OUT_VENDOR)/lib64/libpq_cust_base.so \
 	$(TARGET_OUT_VENDOR)/lib64/libpqparamparser.so \
-	$(TARGET_OUT_VENDOR)/lib64/libpqpconfig.so \
-	$(TARGET_OUT_VENDOR)/lib64/libpq_prot.so \
 	$(TARGET_OUT_VENDOR)/lib64/libPVRMtkutils.so \
 	$(TARGET_OUT_VENDOR)/lib64/libPVROCL.so \
 	$(TARGET_OUT_VENDOR)/lib64/libPVRScopeServices.so \
@@ -325,31 +304,10 @@ VENDOR_PLATFORM_LINKS := \
 	$(TARGET_OUT_VENDOR)/lib64/sc820cs_ofilm_ultra_ii_mipi_raw_india_tuning.so \
 	$(TARGET_OUT_VENDOR)/lib64/sc820cs_ofilm_ultra_ii_mipi_raw_tuning.so
 
-# Gatekeeper symlinks
-GATEKEEPER_SYMLINKS := \
-	$(TARGET_OUT_VENDOR)/lib64/hw/gatekeeper.default.so
-
-# Audio symlinks
-AUDIO_SYMLINKS := \
-	$(TARGET_OUT_VENDOR)/lib64/hw/audio.primary.$(TARGET_BOARD_PLATFORM).so \
-	$(TARGET_OUT_VENDOR)/lib64/hw/audio.r_submix.$(TARGET_BOARD_PLATFORM).so
-
 $(VENDOR_PLATFORM_LINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) echo "Linking $(notdir $@)"
 	@ln -sf $(TARGET_BOARD_PLATFORM)/$(notdir $@) $@
 
-$(GATEKEEPER_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	$(hide) echo "Linking $@"
-	@ln -sf libSoftGatekeeper.so $@
-
-$(AUDIO_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	$(hide) echo "Linking $@"
-	@ln -sf $(subst $(TARGET_BOARD_PLATFORM),mediatek,$(notdir $@)) $@
-
-$(VPUD_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	$(hide) echo "Linking $@"
-	@ln -sf $(notdir $@).$(TARGET_BOARD_PLATFORM) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(VENDOR_PLATFORM_LINKS) $(GATEKEEPER_SYMLINKS) $(SENSORS_SYMLINKS) $(AUDIO_SYMLINKS) $(VPUD_SYMLINKS)
+ALL_DEFAULT_INSTALLED_MODULES += $(VENDOR_PLATFORM_LINKS)
 
 endif

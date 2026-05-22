@@ -14,7 +14,7 @@ import /vendor/etc/init/hw/init.mal.rc
 import /vendor/etc/init/hw/init.sensor_2_0.rc
 
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
-import /vendor/etc/init/hw/init.modem.rc
+import ${ro.vendor.rc}init.modem.rc
 # *** DO NOT import the new rc file after this line ***
 
 on early-init
@@ -105,6 +105,7 @@ on charger
     chown system system /sys/class/leds/green/brightness
 
     start vendor.light-default
+    start vendor.health-default
 
     # Stop bootprof
     write /proc/bootprof "0"
@@ -133,14 +134,12 @@ on fs
 
 on late-fs
     write /proc/bootprof "INIT:late-fs"
-    wait_for_prop hwservicemanager.ready "true"
 
     write /proc/bootprof "INIT:Mount_START --late"
     write /sys/kernel/tracing/trace_marker "B|1|Mount late"
     mount_all --late
     write /sys/kernel/tracing/trace_marker "E"
     write /proc/bootprof "INIT:Mount_END --late"
-
 
 on post-fs
     write /proc/bootprof "INIT:post-fs"
@@ -162,6 +161,14 @@ on post-fs
     chown radio system /proc/freqhopping/freqhopping_debug
     chown radio system /proc/freqhopping/status
     chown radio system /proc/freqhopping/userdef
+
+    # dfx misight miev
+    chmod 0662 /dev/miev
+    restorecon /dev/miev
+
+#sensor Start
+    mkdir /mnt/vendor/persist/sensors 0755 system system
+#sensor End
 
 # change owner
     chown system system /proc/bootprof
@@ -324,7 +331,7 @@ on post-fs-data
 
     # Mali 3D GPU driver
     #insmod /vendor/lib/modules/mali.ko
-    chmod 666 /dev/mali0
+    #chmod 666 /dev/mali0
     #chown system graphics /dev/mali
 
 
@@ -344,10 +351,6 @@ on post-fs-data
     chown root diag /sys/module/tpd_debug/parameters/tpd_em_log
     chown root diag /sys/module/tpd_debug/parameters/tpd_em_log_to_fs
 
-#touch funtions permissions setting
-    chown system system /sys/class/touch/touch_dev/palm_sensor
-    chmod 0664 /sys/class/touch/touch_dev/palm_sensor
-
     chmod 0666 /dev/pmem_multimedia
 
     # set ptmx group to non-root
@@ -357,7 +360,7 @@ on post-fs-data
     chmod 660 /dev/alarm
     chown root system /dev/alarm
 
-    #Create dir for dolby
+    # ADD: Audio_Dolby_Atoms
     mkdir /data/vendor/dolby 0770 media media
 
     # M4U
@@ -407,6 +410,10 @@ on post-fs-data
     chown root graphics /dev/disp_feature
     chmod 666 /dev/disp_feature
 
+    # For fingerprint
+    chmod 0666 /sys/class/mi_display/disp-DSI-0/disp_param
+
+    # For MI-SF brightness clone
     chown system system /sys/class/mi_display/disp-DSI-0/brightness_clone
     chmod 0664 /sys/class/mi_display/disp-DSI-0/brightness_clone
 
@@ -438,8 +445,8 @@ on post-fs-data
     chown radio system /sys/devices/platform/mt-pmic/low_battery_protect_ut
 
     #MDDB
-    mkdir /data/vendor_de/meta 0770 system system
-    mkdir /data/vendor_de/meta/mddb 0770 system system
+    mkdir /data/vendor/test_mode 0770 system system
+    mkdir /data/vendor/test_mode/meta 0770 system system
 
     chown system /sys/devices/platform/msensor/driver/cpsopmode
     chown system /sys/devices/platform/msensor/driver/cpsreptxy
@@ -594,7 +601,6 @@ on post-fs-data
     chmod 0660 /dev/camera-rsc
     chmod 0660 /dev/camera-owe
     chmod 0660 /dev/camera-fdvt
-    chmod 0660 /dev/camera-pda
     chmod 0660 /dev/camera-wpe
     chmod 0660 /dev/camera-pipemgr
     chmod 0660 /dev/kd_camera_hw
@@ -622,7 +628,6 @@ on post-fs-data
     chown system camera /dev/camera-owe
     chown system camera /dev/camera-tsf
     chown system camera /dev/camera-fdvt
-    chown system camera /dev/camera-pda
     chown system camera /dev/camera-wpe
     chown system camera /dev/camera-pipemgr
     chown system camera /dev/kd_camera_hw
@@ -759,14 +764,9 @@ on post-fs-data
     chmod 0664 sys/kernel/debug/rt-regmap/mt6360_ldo.5-0064/reg_addr
     chmod 0664 sys/kernel/debug/rt-regmap/mt6360-4e/reg_addr
 
-    #widevine driver node
-    chmod 0660 /dev/drm_wv
-    chown media system /dev/drm_wv
-
-    # Audio add for BigData Start
+    #Audio add for BigData
     chown system audio /dev/xlog
     chmod 0666 /dev/xlog
-    # Audio add for BigData End
 
 # End of adding by MTK drivers
 # -----------------------
@@ -775,21 +775,22 @@ on zygote-start
 
 on early-boot
     write /proc/bootprof "INIT:early-boot"
-
+    verity_update_state
+    chmod 0664 /sys/class/leds/lcd-backlight/brightness
+    chown system system /sys/class/leds/lcd-backlight/brightness
+    chmod 0664 /sys/class/leds/lcd-backlight/led_type
+    chown system system /sys/class/leds/lcd-backlight/led_type
 on boot
     write /proc/bootprof "INIT:boot"
 
     chmod 0660 /sys/power/autosleep
 
-    chmod 0664 /sys/class/leds/lcd-backlight/brightness
-    chown system system /sys/class/leds/lcd-backlight/brightness
-
     chown system system /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
     chmod 0660 /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
     chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
     chmod 0660 /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
-    chown system system /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
-    chmod 0660 /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
+    chown system system /sys/devices/system/cpu/cpufreq/policy6/scaling_governor
+    chmod 0660 /sys/devices/system/cpu/cpufreq/policy6/scaling_governor
     chown root   system /sys/kernel/debug/binder/transaction_log_enable
     chown root   system /sys/kernel/debug/binder/perf_evalue
     chown system system /sys/devices/system/cpu/rq-stats/htasks_thresh
@@ -811,7 +812,7 @@ on boot
     chown system system /sys/class/leds/blue/trigger
 
     # gauge symbolic
-    symlink /sys/devices/platform/11b20000.i2c/i2c-5/5-0034/11b20000.i2c:mt6375@34:mtk_gauge /dev/gauge
+    symlink /sys/devices/platform/11b20000.i2c/i2c-5/5-0034/11b20000.i2c:mt6375@34:mtk-gauge /dev/gauge
 
     # Permission for hibernation
     chown radio system /sys/power/tuxonice
@@ -819,6 +820,14 @@ on boot
     chmod 0770 /sys/power/tuxonice
     chmod 0220 /sys/power/tuxonice/do_hibernate
 
+    #vibrator
+    chown system system /sys/class/leds/vibrator/trigger
+    write /sys/class/leds/vibrator/trigger "transient"
+    chown system system /sys/class/leds/vibrator/activate
+    chown system system /sys/class/leds/vibrator/brightness
+    chown system system /sys/class/leds/vibrator/duration
+    chown system system /sys/class/leds/vibrator/state
+    chown system system /sys/class/timed_output/vibrator/enable
 
 # Smartbook Handler Framework
     chown system system /sys/power/sb_state
@@ -944,9 +953,6 @@ on boot
     chown root radio /proc/net/netfilter/nfnetlink_log
     chown root radio /proc/net/netfilter/nfnetlink_queue
 
-# For fingerprint
-    chmod 0666 /sys/class/mi_display/disp-DSI-0/disp_param
-
 # WMT proc
     chown shell system /proc/driver/wmt_dbg
     chown shell system /proc/driver/wmt_aee
@@ -990,6 +996,7 @@ on property:vold.decrypt=trigger_shutdown_framework
 service bugreport /system/bin/dumpstate -d -p -B -z \
         -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
     class late_start
+    user root
     disabled
     oneshot
     keycodes 114 115 116
@@ -1008,6 +1015,14 @@ on property:sys.boot_completed=1
     write /sys/block/dm-3/queue/read_ahead_kb 128
     write /sys/block/dm-4/queue/read_ahead_kb 128
     write /sys/block/dm-5/queue/read_ahead_kb 128
+    write /dev/cpuset/foreground/cpus 0-7
+    write /dev/cpuset/foreground/boost/cpus 0-7
+    write /dev/cpuset/background/cpus 0-3
+    write /dev/cpuset/system-background/cpus 0-5
+    write /dev/cpuset/top-app/cpus 0-7
+
+    # zram writeback
+    setprop persist.sys.zram_enabled 1
 
 on property:sys.boot_completed=1
     write /proc/perfmgr/boost_ctrl/cpu_ctrl/boot_freq "-1 -1 -1 -1 -1 -1"
@@ -1068,7 +1083,6 @@ on property:persist.vendor.mediatek.fg.force25c=0
 
 on property:persist.vendor.mediatek.fg.log.enable=1
     write /dev/gauge/FG_daemon_log_level 7
-    write /proc/sys/kernel/printk 8
 
 service charger /system/bin/charger
     class charger
@@ -1080,8 +1094,6 @@ service charger /system/bin/charger
 # add charge_logger service for dump charge message
 on property:sys.boot_completed=1
     start charge_logger
-    start display_logger
-
 service charge_logger /vendor/bin/charge_logger
     class last_start
     user system
@@ -1089,13 +1101,6 @@ service charge_logger /vendor/bin/charge_logger
     disabled
     oneshot
     seclabel u:r:charge_logger:s0
-
-service display_logger /vendor/bin/display_logger
-    class last_start
-    user root
-    group system system wakelock
-    disabled
-    oneshot
 
 # add meta_tst for ATM
 service meta_tst /vendor/bin/meta_tst
@@ -1113,7 +1118,7 @@ service factory_no_image /vendor/bin/factory
     capabilities BLOCK_SUSPEND NET_RAW NET_ADMIN SYS_ADMIN SYS_BOOT
     socket factory-atci stream 660 radio system
     disabled
-    oneshot	
+    oneshot
 
 # start meta_tst for ATM
 on property:sys.boot_completed=1 && property:ro.boot.atm=enable
@@ -1124,6 +1129,10 @@ on property:sys.boot_completed=1 && property:ro.boot.atm=enable
 # reset mdmode when modem crash happens in ATM
 on property:vendor.mtk.md1.status=reset
     setprop persist.vendor.atm.mdmode normal
+
+# Add vendor.minidump.crash_reason
+on property:ro.boot.crash_reason=*
+  setprop vendor.minidump.crash_reason ${ro.boot.crash_reason}
 
 # FPSGO FBT Game
 on boot
@@ -1159,33 +1168,7 @@ on property:ro.vendor.ril.factory_id=*
     setprop ro.ril.factory_id ${ro.vendor.ril.factory_id}
 #code for HTH-299443 by LONGCHEER at 2024.4.2 start
 
-# TouchPad settings for tp_grip_area
-    on property:sys.tp.grip_enable=0
-    write /proc/tp_grip_area 0
-    on property:sys.tp.grip_enable=1
-    write /proc/tp_grip_area 1
-    on property:sys.tp.grip_enable=90
-    write /proc/tp_grip_area 90
-    on property:sys.tp.grip_enable=180
-    write /proc/tp_grip_area 180
-    on property:sys.tp.grip_enable=270
-    write /proc/tp_grip_area 270
-
-# set bluetooth property for xiaomi feature
-on property:sys.boot_completed=1
-    setprop bluetooth.profile.sap.server.enabled false
-    setprop persist.bluetooth.a2dp_offload.disabled false
-    setprop ro.vendor.bluetooth.wipower false
-
-
-#Set debugfs to true in user root
-on property:sys.boot_completed=1 && property:ro.product.debugfs_restrictions.enabled=true && \
-   property:persist.dbg.keep_debugfs_mounted="" && property:ro.build.type=user && property:ro.debuggable="1"
-   setprop persist.dbg.keep_debugfs_mounted 1
-on property:sys.boot_completed=1 && property:ro.build.type=user && property:ro.debuggable="1"
-   mount debugfs debugfs /sys/kernel/debug
-   chmod 0755 /sys/kernel/debug
-
-on property:ro.boot.crash_reason=*
-  setprop vendor.minidump.crash_reason ${ro.boot.crash_reason}
-
+# mount debugfs on user-root
+on late-init && property:ro.build.type=user && property:ro.debuggable=1
+    mount debugfs debugfs /sys/kernel/debug
+    chmod 0755 /sys/kernel/debug

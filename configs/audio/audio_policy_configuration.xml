@@ -49,6 +49,7 @@
                 <item>Earpiece</item>
                 <item>Built-In Mic</item>
                 <item>Built-In Back Mic</item>
+                <item>FM Tuner Out</item>
                 <item>FM Tuner In</item>
                 <item>Voice Call In</item>
                 <item>Echo Ref In</item>
@@ -105,7 +106,7 @@
                 <mixPort name="voice tx" role="sink" maxOpenCount="1" maxActiveCount="1">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="8000 16000 32000 44100 48000"
-                             channelMasks="AUDIO_CHANNEL_IN_MONO"/>
+                             channelMasks="AUDIO_CHANNEL_IN_MONO AUDIO_CHANNEL_IN_STEREO"/>
                 </mixPort>
                 <mixPort name="FM Tuner input" role="sink" maxOpenCount="1" maxActiveCount="1">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
