@@ -1,52 +1,481 @@
 {
-  "Sensors": [
-    {
-      "Name": "CPU",
-      "Type": "CPU",
-      "ZoneName": "soc_max",
-      "HotThreshold": ["NaN", "NaN", "NaN", 85.0, 90.0, 100.0, 117.0],
-      "VrThreshold": "85.0",
-      "Multiplier": 0.001
-    },
-    {
-      "Name": "GPU",
-      "Type": "GPU",
-      "ZoneName": "soc_max",
-      "HotThreshold": ["NaN", "NaN", "NaN", 85.0, 90.0, 100.0, 117.0],
-      "VrThreshold": "85.0",
-      "Multiplier": 0.001
-    },
-    {
-      "Name": "battery",
-      "Type": "BATTERY",
-      "HotThreshold": ["NaN", "NaN", "NaN", 50.0, 55.0, 59.0, 60.0],
-      "VrThreshold": "50.0",
-      "Multiplier": 0.001
-    },
-    {
-      "Name": "ap_ntc",
-      "Type": "SKIN",
-      "HotThreshold": ["NaN", "NaN", "NaN", 50.0, 70.0, 80.0, 90.0],
-      "VrThreshold": "50.0",
-      "Multiplier": 0.001
-    },
-    {
-      "Name": "NPU",
-      "Type": "NPU",
-      "ZoneName": "soc_max",
-      "HotThreshold": ["NaN", "NaN", "NaN", 85.0, 90.0, 100.0, 117.0],
-      "VrThreshold": "NaN",
-      "Multiplier": 0.001
-    }
-  ],
-  "CoolingDevices": [
-    {
-      "Name": "thermal-cpufreq-0",
-      "Type": "CPU"
-    },
-    {
-      "Name": "mutt-pa1",
-      "Type": "MODEM"
-    }
-  ]
+    "Sensors":[
+        {
+            "Name": "cpu-little-core1",
+            "Type": "CPU",
+            "HotThreshold":[
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "85.0",
+            "Multiplier": 0.001
+        },
+	{
+            "Name": "cpu-little-core2",
+            "Type": "CPU",
+            "HotThreshold":[
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "85.0",
+            "Multiplier": 0.001
+        },
+	{
+            "Name": "cpu-little-core3",
+            "Type": "CPU",
+            "HotThreshold":[
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "85.0",
+            "Multiplier": 0.001
+        },
+	{
+            "Name": "cpu-little-core4",
+            "Type": "CPU",
+            "HotThreshold":[
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "85.0",
+            "Multiplier": 0.001
+        },
+	{
+            "Name": "cpu-little-core5",
+            "Type": "CPU",
+            "HotThreshold":[
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "85.0",
+            "Multiplier": 0.001
+        },
+	{
+            "Name": "cpu-little-core6",
+            "Type": "CPU",
+            "HotThreshold":[
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "85.0",
+            "Multiplier": 0.001
+        },
+	{
+            "Name": "cpu-little-core7",
+            "Type": "CPU",
+            "HotThreshold":[
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "85.0",
+            "Multiplier": 0.001
+        },
+	{
+            "Name": "cpu-little-core8",
+            "Type": "CPU",
+            "HotThreshold":[
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "85.0",
+            "Multiplier": 0.001
+        },
+        {
+            "Name": "cpu-big-core1",
+            "Type": "CPU",
+            "HotThreshold":[
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "85.0",
+            "Multiplier": 0.001
+        },
+	{
+            "Name": "cpu-big-core2",
+            "Type": "CPU",
+            "HotThreshold":[
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "85.0",
+            "Multiplier": 0.001
+        },
+	{
+            "Name": "cpu-big-core3",
+            "Type": "CPU",
+            "HotThreshold":[
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "85.0",
+            "Multiplier": 0.001
+        },
+	{
+            "Name": "cpu-big-core4",
+            "Type": "CPU",
+            "HotThreshold":[
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "85.0",
+            "Multiplier": 0.001
+        },
+        {
+            "Name": "gpu1",
+            "Type": "GPU",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "85.0",
+            "Multiplier": 0.001
+        },
+        {
+            "Name": "gpu2",
+            "Type": "GPU",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "85.0",
+            "Multiplier": 0.001
+        },
+        {
+            "Name": "battery",
+            "Type": "BATTERY",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                50.0,
+                55.0,
+                59.0,
+                60.0
+            ],
+            "VrThreshold": "50.0",
+            "Multiplier": 0.001,
+            "Monitor": true
+        },
+        {
+            "Name":"mt6375-gauge",
+            "Type":"BATTERY",
+            "HotThreshold":[
+                "NAN",
+                "NAN",
+                "NAN",
+                50.0,
+                55.0,
+                59.0,
+                60.0
+            ],
+            "VrThreshold":50.0,
+            "Multiplier":0.001
+        },
+        {
+            "Name":"mtk-master-charger",
+            "Type":"BATTERY",
+            "HotThreshold":[
+                "NAN",
+                "NAN",
+                "NAN",
+                50.0,
+                55.0,
+                59.0,
+                60.0
+            ],
+            "VrThreshold":50.0,
+            "Multiplier":0.001
+        },
+        {
+            "Name":"mtk-mst-hvdiv-chg",
+            "Type":"BATTERY",
+            "HotThreshold":[
+                "NAN",
+                "NAN",
+                "NAN",
+                50.0,
+                55.0,
+                59.0,
+                60.0
+            ],
+            "VrThreshold":50.0,
+            "Multiplier":0.001
+        },
+        {
+            "Name":"mtk-slv-hvdiv-chg",
+            "Type":"BATTERY",
+            "HotThreshold":[
+                "NAN",
+                "NAN",
+                "NAN",
+                50.0,
+                55.0,
+                59.0,
+                60.0
+            ],
+            "VrThreshold":50.0,
+            "Multiplier":0.001
+        },
+        {
+            "Name": "ap_ntc",
+            "Type": "SKIN",
+            "HotThreshold": [
+                "NaN",
+                43.0,
+                45.0,
+                50.0,
+                70.0,
+                80.0,
+                90.0
+            ],
+            "VrThreshold": "50.0",
+            "Multiplier": 0.001,
+            "Monitor": true
+        },
+        {
+            "Name": "nrpa_ntc",
+            "Type": "POWER_AMPLIFIER",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                68.0,
+                90.0,
+                100.0,
+                110.0
+            ],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001
+        },
+        {
+            "Name": "ltepa_ntc",
+            "Type": "POWER_AMPLIFIER",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                68.0,
+                90.0,
+                100.0,
+                110.0
+            ],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001
+        },
+        {
+            "Name": "soc1",
+            "Type": "SOC",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001
+        },
+        {
+            "Name": "soc2",
+            "Type": "SOC",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001
+        },
+        {
+            "Name": "soc3",
+            "Type": "SOC",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001
+        },
+        {
+            "Name": "soc4",
+            "Type": "SOC",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001
+        },
+        {
+            "Name": "soc_max",
+            "Type": "SOC",
+            "HotThreshold": [
+                "NaN",
+                "NaN",
+                "NaN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001
+        },
+        {
+            "Name": "NPU",
+            "Type": "NPU",
+            "ZoneName": "soc_max",
+            "HotThreshold": [
+                "NAN",
+                "NAN",
+                "NAN",
+                85.0,
+                90.0,
+                100.0,
+                117.0
+            ],
+            "VrThreshold": "NAN",
+            "Multiplier": 0.001
+        }
+    ],
+    "CoolingDevices": [
+        {
+            "Name": "cpufreq-cpu0",
+            "Type": "GPU"
+        },
+        {
+            "Name": "cpufreq-cpu6",
+            "Type": "GPU"
+        },
+        {
+            "Name": "charger-cooler",
+       	    "Type": "BATTERY"
+        },
+        {
+            "Name": "flashlight_cooler",
+       	    "Type": "CAMERA"
+        },
+        {
+            "Name": "wifi-cooler",
+            "Type": "WIFI"
+        },
+        {
+            "Name": "lcd-backlight",
+            "Type": "DISPLAY"
+        },
+        {
+            "Name": "wifi-cooler",
+            "Type": "WIFI"
+        },
+        {
+            "Name": "flashlight_cooler",
+            "Type": "CAMERA"
+        }
+        {
+            "Name": "mutt-pa1",
+            "Type": "MODEM"
+        },
+        {
+            "Name": "tx-pwr-pa1",
+            "Type": "MODEM"
+        },
+        {
+            "Name": "mutt-pa2",
+            "Type": "MODEM"
+        },
+        {
+            "Name": "tx-pwr-pa2",
+            "Type": "MODEM"
+        },
+        {
+            "Name": "scg-off-pa2",
+            "Type": "MODEM"
+        }
+    ]
 }
