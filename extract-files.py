@@ -196,6 +196,7 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib64/hw/mt6855/mapper.powervr.so': blob_fixup()
         .add_needed('libPVRMtkutils.so')
         .add_needed('libIMGegl.so')
+        .add_needed('libgralloc_extra.so')
 }  # fmt: skip
 
 module = ExtractUtilsModule(
