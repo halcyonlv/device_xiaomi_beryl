@@ -2298,6 +2298,12 @@ vendor/lib64/mediadrm/libmockdrmcryptoplugin.so
 vendor/lib64/liboemcrypto.so
 vendor/lib64/libwvkeybox.so
 
+# Fido
+vendor/bin/fidoca_mitee
+vendor/etc/init/vendor.xiaomi.hardware.mfidoca-miteeservice.rc
+vendor/lib64/libmfido_mitee.so
+vendor/lib64/vendor.xiaomi.hardware.mfidoca-V1-ndk.so
+
 # Fingerprint
 vendor/lib64/anc.hal.so
 odm/lib64/hw/fingerprint.jiiov.so
@@ -2555,6 +2561,12 @@ vendor/lib64/libmvpuop25_mtk_cv.so
 vendor/lib64/libmvpuop25_mtk_nn.so
 vendor/lib64/libmvpuop_mtk_cv.so
 vendor/lib64/libmvpuop_mtk_nn.so
+
+# Mlipay
+vendor/bin/mlipayd_mitee
+vendor/etc/init/vendor.xiaomi.hardware.mlipay-miteeservice.rc
+vendor/lib64/libmlipay_mitee.so
+vendor/lib64/vendor.xiaomi.hardware.mlipay-V1-ndk.so
 
 # MMAgent
 vendor/bin/hw/vendor.mediatek.hardware.mmagent-service
