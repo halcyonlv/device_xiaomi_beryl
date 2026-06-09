@@ -190,8 +190,11 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib64/hw/mt6855/libpvr_mapper_utils.so': blob_fixup()
         .clear_symbol_version('AHardwareBuffer_describe')
         .clear_symbol_version('AHardwareBuffer_getNativeHandle')
+        .add_needed('libPVRMtkutils.so'),
     'system_ext/bin/hw/android.hardware.audio.parameter_parser.service': blob_fixup()
         .replace_needed('av-audio-types-aidl-ndk.so', 'av-audio-types-aidl-V3-ndk.so')
+    'vendor/lib64/hw/mt6855/mapper.powervr.so': blob_fixup()
+        .add_needed('libPVRMtkutils.so')
 }  # fmt: skip
 
 module = ExtractUtilsModule(
