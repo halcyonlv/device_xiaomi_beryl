@@ -197,6 +197,7 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libPVRMtkutils.so')
         .add_needed('libIMGegl.so')
         .add_needed('libgralloc_extra.so')
+        .add_needed('libsync.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
