@@ -200,6 +200,8 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libsync.so'),
     'vendor/bin/mtk_agpsd': blob_fixup()
         .replace_needed('libssl.so', 'libssl-v36.so'),
+    'vendor/lib64/android.hardware.audio.core-impl-mediatek.so': blob_fixup()
+        .add_needed('libaudioutils-v36.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
