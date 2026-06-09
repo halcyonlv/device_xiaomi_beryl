@@ -195,6 +195,7 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('av-audio-types-aidl-ndk.so', 'av-audio-types-aidl-V3-ndk.so')
     'vendor/lib64/hw/mt6855/mapper.powervr.so': blob_fixup()
         .add_needed('libPVRMtkutils.so')
+        .add_needed('libIMGegl.so')
 }  # fmt: skip
 
 module = ExtractUtilsModule(
