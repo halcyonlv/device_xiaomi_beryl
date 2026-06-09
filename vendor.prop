@@ -87,15 +87,23 @@ persist.sys.fuse.passthrough.enable=true
 # Graphics
 debug.graphics.game_default_frame_rate.disabled=true
 graphics.gpu.profiler.support=true
-ro.hardware.egl=meow
-ro.hardware.gralloc=common
+ro.hardware.egl=mtk
+ro.hardware.gralloc=rogue
 ro.vendor.composer_version=3.4
 ro.hardware.hwcomposer=mtk_common
 ro.hardware.vulkan=mtk
 ro.opengles.version=196610
-ro.vendor.build.dont_use_vabc=true
 ro.vendor.mtk_ovl_bringup=0
 ro.vendor.smvr.p2batch.hd=4
+ro.vendor.mtk_hdr_video_support=1
+ro.vendor.mtk_cuva_hdr_support=1
+ro.vendor.mtk_hdr10p_adaptive_support=0
+ro.vendor.mtk_hdr10_adaptive_support=0
+ro.vendor.mtk_hlg_adaptive_support=0
+ro.vendor.mtk_hdrvivid_adaptive_support=0
+ro.vendor.mtk_airegionpq_adaptive_support=0
+ro.vendor.mtk_sdr_adaptive_support=0
+ro.vendor.mtk_fd_support=1
 
 # GPS
 ro.vendor.gps.chrdev=gps_drv_stp
@@ -137,6 +145,8 @@ ro.vendor.mtk.c2.vdec.fmt.support.level=2
 ro.vendor.mtk_sec_video_path_support=1
 ro.vendor.mtk_video_hevc_enc_support=1
 vendor.mtk.vdec.waitkeyframeforplay=9
+ro.vendor.mtk_mvpu_support=0
+ro.vendor.mtk_mvpu_security_support=0
 
 # Netflix
 ro.netflix.bsp_rev=MTK6855-35905-1
@@ -147,9 +157,6 @@ ro.vendor.mtk_nn_quant_preferred=1
 
 # Platform
 ro.vendor.mediatek.platform=MT6855
-ro.vendor.mediatek.version.branch=alps-mp-s0.mp1.tc8sp2
-ro.vendor.mediatek.version.release=alps-mp-b0.mp1.tc8sp2-V1_xiaomi_P0017
-ro.vendor.mgvi_name=mihal
 
 # Power
 vendor.powerhal.interaction.offset=0
@@ -157,37 +164,60 @@ vendor.powerhal.interaction.min=50
 vendor.powerhal.interaction.max=150
 
 # PQ
-ro.vendor.pq.mtk_aal_support=1
+ro.vendor.mtk.pq.aidl=true
+ro.vendor.mtk_prefer_64bit_proc=0
+ro.vendor.mtk_pq_support=2
+ro.vendor.mml.mtk_mml_support=0
+persist.vendor.sys.pq.oddmr_dbi_support=0
+ro.vendor.pq.mtk_pq_video_whitelist_support=0
+ro.vendor.pq.mtk_video_transition=0
+ro.vendor.pq.mtk_scltm_support=0
+ro.vendor.pq.mtk_scltm_support=0
 ro.vendor.pq.mtk_ai_scence_pq_support=0
+ro.vendor.pq.mtk_hdr10_plus_recording_support=0
+ro.vendor.pq.mtk_mdp_lite_pq_support=0
 ro.vendor.pq.mtk_ai_sdr_to_hdr_support=0
-ro.vendor.pq.mtk_backlight_smooth_support=0
-ro.vendor.pq.mtk_blulight_def_support=0
+ro.vendor.pq.mtk_ai_region_pq_support=0
+ro.vendor.pq.mtk_skia_pq_support=0
+ro.vendor.pq.mtk_cv_based_sdr_support=0
+ro.vendor.pq.mtk_ai_hdr_model_dq=0
+ro.vendor.pq.mtk_dc_support=0
+ro.vendor.pq.mtk_mml_c3d_support=0
+ro.vendor.pq.mtk_ds_support=0
+ro.vendor.pq.mtk_ultra_resolution_support=0
+ro.vendor.mtk_pq_color_mode=1
+ro.vendor.pq.mtk_hfg_support=1
 ro.vendor.pq.mtk_caltm_support=1
 ro.vendor.pq.mtk_clearzoom_support=1
-ro.vendor.pq.mtk_dc_support=0
+ro.vendor.pq.mtk_mdp_ccorr_support=0
+ro.vendor.pq.mtk_pq_interface_support=0
+ro.vendor.pq.mtk_hdr10_panel_dtmo_support=0
+ro.vendor.pq.mtk_hdr10p_panel_dtmo_support=0
+ro.vendor.pq.mtk_hlg_panel_dtmo_support=0
+ro.vendor.pq.mtk_hdrvivid_panel_dtmo_support=0
+ro.vendor.pq.mtk_airegionpq_panel_dtmo_support=0
+ro.vendor.pq.mtk_sdr_panel_dtmo_support=0
+ro.vendor.pq.mtk_mml_color_adaptive_support=0
 ro.vendor.pq.mtk_disp_c3d_support=0
-ro.vendor.pq.mtk_disp_ccorr_support=1
-ro.vendor.pq.mtk_disp_color_support=1
-ro.vendor.pq.mtk_disp_game_pq_support=0
-ro.vendor.pq.mtk_disp_gamma_support=1
 ro.vendor.pq.mtk_disp_tdshp_support=1
+ro.vendor.pq.mtk_disp_color_support=1
+ro.vendor.pq.mtk_disp_ccorr_support=1
+ro.vendor.pq.mtk_disp_gamma_support=1
+ro.vendor.pq.mtk_aal_support=1
 ro.vendor.pq.mtk_dre_cap=0
 ro.vendor.pq.mtk_dre30_support=0
-ro.vendor.pq.mtk_ds_support=0
-ro.vendor.pq.mtk_hdr10_plus_recording_support=0
-ro.vendor.pq.mtk_hfg_support=1
-ro.vendor.pq.mtk_mdp_ccorr_support=0
-ro.vendor.pq.mtk_mdp_lite_pq_support=0
-ro.vendor.pq.mtk_pq_interface_support=0
-ro.vendor.pq.mtk_pq_video_whitelist_support=0
-ro.vendor.pq.mtk_scltm_support=0
+ro.vendor.pq.mtk_disp_game_pq_support=0
+ro.vendor.pq.mtk_backlight_smooth_support=0
 ro.vendor.pq.mtk_ultra_dimming_support=0
-ro.vendor.pq.mtk_ultra_resolution_support=0
-ro.vendor.pq.mtk_video_transition=0
+ro.vendor.pq.mtk_blulight_def_support=1
+ro.vendor.pq.mtk_smart_bluelight_def_support=0
+ro.vendor.pq.mtk_smart_true_tone_support=0
+persist.vendor.sys.pq.mtk_disp_clarity_support=0
 
 # Radio
 persist.radio.multisim.config=dsds
 persist.vendor.ims_support=1
+ro.vendor.mtk_single_bin_modem_support=1
 persist.vendor.md_c2k_cap_dep_check=0
 persist.vendor.mims_support=2
 persist.vendor.mtk_ct_volte_support=3
