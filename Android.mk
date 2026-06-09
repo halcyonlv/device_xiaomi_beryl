@@ -123,7 +123,6 @@ VENDOR_PLATFORM_LINKS := \
 	$(TARGET_OUT_VENDOR)/lib64/libcam.utils.sensorprovider.so \
 	$(TARGET_OUT_VENDOR)/lib64/libcam.vhdr.so \
 	$(TARGET_OUT_VENDOR)/lib64/libdip_drv.so \
-	$(TARGET_OUT_VENDOR)/lib64/libdip_postproc.so \
 	$(TARGET_OUT_VENDOR)/lib64/libdpframework.so \
 	$(TARGET_OUT_VENDOR)/lib64/libDR.so \
 	$(TARGET_OUT_VENDOR)/lib64/libeffecthal.base.so \
@@ -137,7 +136,6 @@ VENDOR_PLATFORM_LINKS := \
 	$(TARGET_OUT_VENDOR)/lib64/libfeature.stereo.provider.so \
 	$(TARGET_OUT_VENDOR)/lib64/libfeature.vsdof.hal.so \
 	$(TARGET_OUT_VENDOR)/lib64/libgpudataproducer.so \
-	$(TARGET_OUT_VENDOR)/lib64/libimageio_plat_drv.so \
 	$(TARGET_OUT_VENDOR)/lib64/libimageio_plat_pipe.so \
 	$(TARGET_OUT_VENDOR)/lib64/libimageio.so \
 	$(TARGET_OUT_VENDOR)/lib64/libIMGegl.so \
@@ -211,7 +209,6 @@ VENDOR_PLATFORM_LINKS := \
 	$(TARGET_OUT_VENDOR)/lib64/libmtkcam_tuning_utils.so \
 	$(TARGET_OUT_VENDOR)/lib64/libmtkcam_ulog.so \
 	$(TARGET_OUT_VENDOR)/lib64/libmtk_drvb.so \
-	$(TARGET_OUT_VENDOR)/lib64/libneuralnetworks_sl_driver_mtk_prebuilt.so \
 	$(TARGET_OUT_VENDOR)/lib64/libneuron_adapter_mgvi.so \
 	$(TARGET_OUT_VENDOR)/lib64/libneuron_runtime.5.so \
 	$(TARGET_OUT_VENDOR)/lib64/libnir_neon_driver.so \
