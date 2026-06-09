@@ -65,14 +65,34 @@ PRODUCT_PACKAGES += \
     android.hardware.boot-service.default_recovery
 
 # Audio
-TARGET_EXCLUDES_AUDIOFX := true
 PRODUCT_PACKAGES += \
+    audio.primary.default \
+    audio.bluetooth.default \
     audio_policy.stub \
-    libaudiofoundation.vendor \
-    libalsautils \
-    libnbaio_mono \
-    libtinycompress \
-    libdynproc
+    audio.r_submix.default \
+    audio.usb.default
+
+PRODUCT_PACKAGES += \
+    libaecsw \
+    libagc1sw \
+    libagc2sw \
+    libbassboostsw \
+    libbundleaidl \
+    libdownmixaidl \
+    libdynamicsprocessingaidl \
+    libenvreverbsw \
+    libequalizersw \
+    liberasersw \
+    libextensioneffect \
+    libhapticgeneratoraidl \
+    libloudnessenhanceraidl \
+    libnssw \
+    libpreprocessingaidl \
+    libpresetreverbsw \
+    libreverbaidl \
+    libvirtualizersw \
+    libvisualizeraidl \
+    libvolumesw
 
 PRODUCT_PACKAGES += \
     MtkInCallService \

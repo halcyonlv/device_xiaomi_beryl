@@ -19,6 +19,9 @@ vendor/lib64/vendor.mediatek.hardware.apuware.utils-V1-ndk.so;MODULE_SUFFIX=-ven
 vendor/lib64/vendor.mediatek.hardware.apuware.utils@2.0.so;MODULE_SUFFIX=-vendor
 
 # Audio
+system_ext/bin/hw/android.hardware.audio.parameter_parser.service
+system_ext/etc/init/android.hardware.audio.parameter_parser.service.rc
+system/lib64/av-audio-types-aidl-ndk.so:system/lib64/av-audio-types-aidl-V3-ndk.so;FIX_SONAME
 vendor/bin/hw/android.hardware.audio.service-aidl.mediatek
 vendor/etc/init/android.hardware.audio.service-aidl.mediatek.rc
 vendor/etc/AudioDump_dynamic.ds
@@ -53,6 +56,8 @@ vendor/lib64/libmtklimiter_vendor.so
 vendor/lib64/libmtkshifter_vendor.so
 vendor/lib64/librt_extamp_intf.so
 vendor/lib64/libsixth.so
+vendor/lib64/libaudiopolicyconfigxml_mtk_vendor.so
+vendor/lib64/libmtkspparser.so
 vendor/lib64/libspeech_enh_lib.so;FIX_SONAME
 vendor/lib64/libspeechparser_vendor.so
 vendor/lib64/vendor.mediatek.hardware.audio-V1-ndk.so

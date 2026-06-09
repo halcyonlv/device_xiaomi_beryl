@@ -157,9 +157,12 @@ blob_fixups: blob_fixups_user_type = {
     .replace_needed("libstagefright_foundation.so", "libstagefright_foundation-v33.so"),
     'vendor/bin/hw/mtkfusionrild': blob_fixup()
         .add_needed('libutils-v32.so'),
+<<<<<<< HEAD
     ('vendor/lib64/hw/audio.primary.mediatek.so',
      'vendor/lib64/librt_extamp_intf.so'): blob_fixup()
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
+    'system_ext/bin/hw/android.hardware.audio.parameter_parser.service': blob_fixup()
+        .replace_needed('av-audio-types-aidl-ndk.so', 'av-audio-types-aidl-V3-ndk.so')
 }  # fmt: skip
 
 module = ExtractUtilsModule(
