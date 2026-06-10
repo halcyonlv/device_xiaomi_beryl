@@ -6,14 +6,14 @@
 
 prebuilt_etc {
     name: "init.recovery.usb.rc",
-    src: "etc/init.recovery.usb.rc",
+    src: "init.recovery.usb.rc",
     recovery: true,
     sub_dir: "init"
 }
 
 prebuilt_etc {
     name: "fstab.mt6855",
-    src: "etc/fstab.mt6855",
+    src: "fstab.mt6855",
     vendor: true,
     vendor_ramdisk_available: true
 }
@@ -21,101 +21,101 @@ prebuilt_etc {
 prebuilt_etc {
     name: "ueventd.mt6855.rc",
     filename: "ueventd.rc",
-    src: "etc/ueventd.mt6855.rc",
+    src: "ueventd.mt6855.rc",
     vendor: true
 }
 
 sh_binary {
     name: "init.insmod.sh",
-    src: "bin/init.insmod.sh",
+    src: "init.insmod.sh",
     vendor: true
 }
 
 prebuilt_etc {
     name: "init.insmod.mt6855.cfg",
-    src: "etc/init.insmod.mt6855.cfg",
+    src: "init.insmod.mt6855.cfg",
     vendor: true
 }
 
 prebuilt_etc {
     name: "init.insmod.touch.cfg",
-    src: "etc/init.insmod.touch.cfg",
+    src: "init.insmod.touch.cfg",
     vendor: true
 }
 
 prebuilt_etc {
     name: "init.batterysecret.rc",
-    src: "etc/init/hw/init.batterysecret.rc",
+    src: "init.batterysecret.rc",
     sub_dir: "init/hw",
     vendor: true
 }
 
 prebuilt_etc {
     name: "init.connectivity.rc",
-    src: "etc/init/hw/init.connectivity.rc",
+    src: "init.connectivity.rc",
     sub_dir: "init/hw",
     vendor: true
 }
 
 prebuilt_etc {
     name: "init.fingerprint.rc",
-    src: "etc/init/hw/init.fingerprint.rc",
+    src: "init.fingerprint.rc",
     sub_dir: "init/hw",
     vendor: true
 }
 
 prebuilt_etc {
     name: "init.mi_thermald.rc",
-    src: "etc/init/init.mi_thermald.rc",
+    src: "init.mi_thermald.rc",
     sub_dir: "init",
     vendor: true
 }
 
 prebuilt_etc {
     name: "init.modem.rc",
-    src: "etc/init/hw/init.modem.rc",
+    src: "init.modem.rc",
     sub_dir: "init/hw",
     vendor: true
 }
 
 prebuilt_etc {
     name: "init.mt6855.rc",
-    src: "etc/init/hw/init.mt6855.rc",
+    src: "init.mt6855.rc",
     sub_dir: "init/hw",
     vendor: true
 }
 
 prebuilt_etc {
     name: "init.mt6855.power.rc",
-    src: "etc/init/hw/init.mt6855.power.rc",
+    src: "init.mt6855.power.rc",
     sub_dir: "init/hw",
     vendor: true
 }
 
 prebuilt_etc {
     name: "init.mt6855.usb.rc",
-    src: "etc/init/hw/init.mt6855.usb.rc",
+    src: "init.mt6855.usb.rc",
     sub_dir: "init/hw",
     vendor: true
 }
 
 prebuilt_etc {
     name: "init.mtkgki.rc",
-    src: "etc/init/hw/init.mtkgki.rc",
+    src: "init.mtkgki.rc",
     sub_dir: "init/hw",
     vendor: true
 }
 
 prebuilt_etc {
     name: "init.project.rc",
-    src: "etc/init/hw/init.project.rc",
+    src: "init.project.rc",
     sub_dir: "init/hw",
     vendor: true
 }
 
 prebuilt_etc {
     name: "init.sensor_2_0.rc",
-    src: "etc/init/hw/init.sensor_2_0.rc",
+    src: "init.sensor_2_0.rc",
     sub_dir: "init/hw",
     vendor: true
 }
