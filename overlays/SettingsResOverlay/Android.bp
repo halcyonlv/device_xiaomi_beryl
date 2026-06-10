@@ -7,5 +7,5 @@
 runtime_resource_overlay {
     name: "SettingsResOverlayBeryl",
     vendor: true,
-    resource_dirs: ["res"]
+    resource_dirs: ["res"],
 }

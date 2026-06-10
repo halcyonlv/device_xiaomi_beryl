@@ -7,5 +7,5 @@ runtime_resource_overlay {
     name: "WifiResOverlayBeryl",
     sdk_version: "current",
     vendor: true,
-    resource_dirs: ["res"]
+    resource_dirs: ["res"],
 }
