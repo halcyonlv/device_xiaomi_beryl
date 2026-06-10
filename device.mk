@@ -129,9 +129,9 @@ PRODUCT_PACKAGES += \
     fastbootd
 
 # Fingerprint
+$(call soong_config_set,XIAOMI_BIOMETRICS_FINGERPRINT,IMPL_VER,V2)
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint-service.xiaomi \
-    libudfpshandler
+    android.hardware.biometrics.fingerprint-service.xiaomi
 
 PRODUCT_PACKAGES += \
     libudfpshandler \
