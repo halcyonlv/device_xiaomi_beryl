@@ -18,6 +18,15 @@
 #include "UdfpsHandler.h"
 #include "mi_disp.h"
 
+#define CMD_DATA_BUF_SIZE 256
+
+#define COMMON_DATA_CMD 0
+#define SELECT_TOUCH_ID 3
+#define SET_CUR_VALUE 0
+
+#define Touch_Fod_Enable 10
+#define THP_FOD_DOWNUP_CTL 1001
+
 #define COMMAND_NIT 10
 #define PARAM_NIT_FOD 1
 #define PARAM_NIT_NONE 0
@@ -32,16 +41,23 @@
 #define FOD_STATUS_OFF 0
 #define FOD_STATUS_ON 1
 
-#define SET_CUR_VALUE 0
-#define Touch_Fod_Enable 10
-#define TOUCH_MAGIC 't'
-#define TOUCH_IOC_SETMODE _IO(TOUCH_MAGIC, SET_CUR_VALUE)
-#define TOUCH_ID 0
-
 #define TOUCH_DEV_PATH "/dev/xiaomi-touch"
+#define TOUCH_MAGIC 0x54
+
 #define DISP_FEATURE_PATH "/dev/mi_display/disp_feature"
 
 #define FINGERPRINT_ACQUIRED_VENDOR 7
+
+typedef struct {
+    int8_t touch_id;
+    uint8_t cmd;
+    uint16_t mode;
+    uint16_t data_len;
+    int32_t data_buf[CMD_DATA_BUF_SIZE];
+} touch_base;
+
+#define TOUCH_IOC_SELECT_TOUCH_ID _IOW(TOUCH_MAGIC, SELECT_TOUCH_ID, int)
+#define TOUCH_IOC_COMMON_DATA _IOW(TOUCH_MAGIC, COMMON_DATA_CMD, touch_base)
 
 using ::aidl::android::hardware::biometrics::fingerprint::AcquiredInfo;
 
@@ -88,6 +104,14 @@ static disp_event_resp* parseDispEvent(int fd) {
 
     return (struct disp_event_resp*)&event_data[0];
 }
+
+touch_base touchDataPrimary = {
+        .touch_id = MI_DISP_PRIMARY,
+        .cmd = SET_CUR_VALUE,
+        .mode = 0,
+        .data_len = 1,
+        .data_buf = {},
+};
 
 }  // anonymous namespace
 
@@ -147,81 +171,69 @@ class XiaomiBerylUdfpsHandler : public UdfpsHandler {
         }).detach();
     }
 
-    void onFingerDown(uint32_t x, uint32_t y, float /*minor*/, float /*major*/) {
-        LOG(DEBUG) << __func__ << "x: " << x << ", y: " << y;
-        // Track x and y coordinates
-        lastPressX = x;
-        lastPressY = y;
-
-        // Ensure touchscreen is aware of the press state, ideally this is not needed
+    void onFingerDown(uint32_t /*x*/, uint32_t /*y*/, float /*minor*/, float /*major*/) {
+        if (mAuthSuccess) return;
         setFingerDown(true);
     }
 
-    void onFingerUp() {
-        LOG(DEBUG) << __func__;
-        // Ensure touchscreen is aware of the press state, ideally this is not needed
-        setFingerDown(false);
-    }
+    void onFingerUp() { setFingerDown(false); }
 
     void onAcquired(int32_t result, int32_t vendorCode) {
         LOG(DEBUG) << __func__ << " result: " << result << " vendorCode: " << vendorCode;
-        if (result != FINGERPRINT_ACQUIRED_VENDOR) {
-            if (static_cast<AcquiredInfo>(result) == AcquiredInfo::GOOD) {
-            // Request to disable HBM already, even if the finger is still pressed
-            disp_local_hbm_req req;
-            req.base.flag = 0;
-            req.base.disp_id = MI_DISP_PRIMARY;
-            req.local_hbm_value = LHBM_TARGET_BRIGHTNESS_OFF_FINGER_UP;
-            ioctl(disp_fd_.get(), MI_DISP_IOCTL_SET_LOCAL_HBM, &req);
-            setFodStatus(FOD_STATUS_OFF);
-            }
-        } else if (vendorCode == 21 || vendorCode == 23) {
-            /*
-             * vendorCode = 21 waiting for fingerprint authentication
-             * vendorCode = 23 waiting for fingerprint enroll
-             */
+        switch (static_cast<AcquiredInfo>(result)) {
+            case AcquiredInfo::GOOD:
+            case AcquiredInfo::PARTIAL:
+            case AcquiredInfo::INSUFFICIENT:
+            case AcquiredInfo::SENSOR_DIRTY:
+            case AcquiredInfo::TOO_SLOW:
+            case AcquiredInfo::TOO_FAST:
+            case AcquiredInfo::TOO_DARK:
+            case AcquiredInfo::TOO_BRIGHT:
+            case AcquiredInfo::IMMOBILE:
+            case AcquiredInfo::LIFT_TOO_SOON:
+		onFingerUp();
+                break;
+            default:
+                break;
+        }
+        if (vendorCode == 21) {
             setFodStatus(FOD_STATUS_ON);
-        } else if (vendorCode == 44) {
-            /*
-             * vendorCode = 44 fingerprint scan failed
-             */
-            setFingerDown(false);
         }
     }
 
-    void cancel() {
-        LOG(DEBUG) << __func__;
-        setFodStatus(FOD_STATUS_OFF);
+    void onAuthenticationFailed() { onFingerUp(); }
+
+    void onAuthenticationSucceeded() {
+        mAuthSuccess = true;
+        onFingerUp();
+        std::thread([this]() {
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
+            mAuthSuccess = false;
+        }).detach();
     }
 
   private:
     fingerprint_device_t* mDevice;
     android::base::unique_fd disp_fd_;
     android::base::unique_fd touch_fd_;
-    uint32_t lastPressX, lastPressY;
+    bool mAuthSuccess = false;
 
     void setFodStatus(int value) {
+        ioctl(touch_fd_.get(), TOUCH_IOC_SELECT_TOUCH_ID, MI_DISP_PRIMARY);
+        touch_base data = {
+            .mode = Touch_Fod_Enable,
+            .data_buf = {value},
+        };
+        ioctl(touch_fd_.get(), TOUCH_IOC_COMMON_DATA, &data);
         set(FOD_STATUS_PATH, value);
-        int arg[3] = {TOUCH_ID, Touch_Fod_Enable, value};
-        ioctl(touch_fd_, TOUCH_IOC_SETMODE, &arg);
     }
-
     void setFingerDown(bool pressed) {
-        // xiaomi-touch
-        int arg[3] = {TOUCH_ID, Touch_Fod_Enable, pressed ? 1 : 0};
-        ioctl(touch_fd_, TOUCH_IOC_SETMODE, &arg);
-
-        // Request HBM
+        mDevice->extCmd(mDevice, COMMAND_FOD_PRESS_STATUS, pressed ? PARAM_FOD_PRESSED : PARAM_FOD_RELEASED);
         disp_local_hbm_req req;
         req.base.flag = 0;
         req.base.disp_id = MI_DISP_PRIMARY;
-        req.local_hbm_value = pressed ? LHBM_TARGET_BRIGHTNESS_WHITE_1000NIT
-                                      : LHBM_TARGET_BRIGHTNESS_OFF_FINGER_UP;
+        req.local_hbm_value = pressed ? LHBM_TARGET_BRIGHTNESS_WHITE_1000NIT : LHBM_TARGET_BRIGHTNESS_OFF_FINGER_UP;
         ioctl(disp_fd_.get(), MI_DISP_IOCTL_SET_LOCAL_HBM, &req);
-
-        // Notify HAL of both press and release events
-        mDevice->extCmd(mDevice, COMMAND_FOD_PRESS_STATUS,
-                        pressed ? PARAM_FOD_PRESSED : PARAM_FOD_RELEASED);
     }
 };
 
