@@ -207,6 +207,8 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libformatter.so', 'libformatter_mtk.so'),
     'vendor/bin/mnld': blob_fixup()
         .replace_needed('libmnl.so', 'libmnl_mtk.so'),
+    'vendor/lib64/hw/android.hardware.soundtrigger3-impl.so': blob_fixup()
+        .replace_needed('android.hardware.soundtrigger3-V3-ndk.so', 'android.hardware.soundtrigger3-V4-ndk.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
