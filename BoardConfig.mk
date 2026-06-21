@@ -199,6 +199,10 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
 
+# SKU
+ODM_MANIFEST_SKUS += o17gl o17pgl
+ODM_MANIFEST_O17GL_FILES := $(DEVICE_PATH)/configs/vintf/sku/manifest_o17gl.xml
+ODM_MANIFEST_O17PGL_FILES := $(DEVICE_PATH)/configs/vintf/sku/manifest_o17pgl.xml
 
 # Vibrator
 $(call soong_config_set,mediatek_vibrator,supports_effects,true)

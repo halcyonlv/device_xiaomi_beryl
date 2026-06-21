@@ -1,0 +1,13 @@
+<!--
+    Input:
+        device/xiaomi/mivendor/odm/mt6855/manifest_o17pgl.xml
+        device/xiaomi/mivendor/odm/mt6855/manifest_o17pgl.xml
+        device/xiaomi/beryl/odm/manifest_nfc.xml
+-->
+<manifest version="9.0" type="device">
+    <hal format="aidl">
+        <name>android.hardware.secure_element</name>
+        <fqname>ISecureElement/SIM1</fqname>
+        <fqname>ISecureElement/SIM2</fqname>
+    </hal>
+</manifest>
