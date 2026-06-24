@@ -209,4 +209,12 @@
         <name>vendor.xiaomi.hardware.vsimapp</name>
         <fqname>IVSIMService/default</fqname>
     </hal>
+    <hal format="aidl">
+        <name>android.hardware.gnss</name>
+        <version>5</version>
+        <interface>
+            <name>IGnss</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
 </manifest>
