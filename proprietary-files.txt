@@ -2792,9 +2792,6 @@ vendor/lib64/libvow_ap_test_vaca_hh.so
 vendor/lib64/libvow_ap_test_vaca_nn.so
 vendor/lib64/libvow_comp_test.so
 
-# Tinyxml12
-system/lib64/libtinyxml2.so:vendor/lib64/libtinyxml2-v36.so;FIX_SONAME
-
 # TEE
 vendor/bin/miteelog
 vendor/bin/tee-supplicant
