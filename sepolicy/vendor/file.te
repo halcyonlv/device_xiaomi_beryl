@@ -1,3 +1,7 @@
+# Audio
+type audio_socket, file_type;
+type sysfs_audio_pa, sysfs_type, fs_type;
+
 # Camera
 type vendor_camera_data_file, data_file_type, file_type;
 type camera_persist_file, file_type;
@@ -9,7 +13,8 @@ type vendor_displayfeature_sysfs, fs_type, sysfs_type;
 # Fingerprint
 type vendor_fingerprint_sysfs, sysfs_type, fs_type;
 
-# Trusted Execution Environment (TEE)
-type mitee_client_device, dev_type, mlstrustedobject;
-type mitee_data_file, data_file_type, file_type;
-type proc_mitee_log, fs_type, proc_type;
+# MIEV
+type miev_dev, dev_type, mlstrustedobject;
+
+# Power
+type proc_touchpanel, fs_type, proc_type;

@@ -1,5 +1,8 @@
+# Audio
+genfscon sysfs /android_audio/audio_pa u:object_r:sysfs_audio_pa:s0
+
 # Display
-genfscon sysfs /devices/virtual/mi_display/disp_feature/disp-DSI-0/disp_param                         u:object_r:vendor_displayfeature_sysfs:s0
+genfscon sysfs /devices/virtual/mi_display/disp_feature/disp-DSI-0                         u:object_r:vendor_displayfeature_sysfs:s0
 
 # Extcon
 genfscon sysfs /devices/platform/extcon_usb1 u:object_r:sysfs_extcon:s0
@@ -77,12 +80,13 @@ genfscon sysfs /devices/platform/soc/soc:pd_adapter/Charging_Adapter/pd_adapter/
 genfscon sysfs /devices/platform/soc/soc:pd_adapter/Charging_Adapter/pd_adapter/current_state u:object_r:sysfs_power_supply:s0
 genfscon sysfs /devices/platform/soc/soc:pd_adapter/Charging_Adapter/pd_adapter/request_vdm_cmd u:object_r:sysfs_power_supply:s0
 genfscon sysfs /devices/platform/11db1000.i2c/i2c-6/6-006a/power_supply/sc-cp-standalone/type u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/11b20000.i2c/i2c-5/5-0034/11b20000.i2c:mt6375@34:mtk-gauge/power_supply/mt6375-gauge/type u:object_r:sysfs_power_supply:s0
 
 # Fingerprint
 genfscon sysfs /devices/virtual/touch/touch_dev/fod_press_status u:object_r:vendor_fingerprint_sysfs:s0
 
-# Trusted Execution Environment (TEE)
-genfscon proc /mitee_log 									 u:object_r:proc_mitee_log:s0
+# Power
+genfscon proc /tp_gesture u:object_r:proc_touchpanel:s0
 
 # Wakeup (https://lkml.org/lkml/2019/8/6/1275)
 genfscon sysfs /devices/platform/11b20000.i2c/i2c-5/5-0034/11b20000.i2c:mt6375@34:adc/wakeup u:object_r:sysfs_wakeup:s0
