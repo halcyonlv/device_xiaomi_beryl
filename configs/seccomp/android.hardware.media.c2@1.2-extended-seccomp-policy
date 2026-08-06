@@ -39,4 +39,8 @@ getrlimit: 1
 newfstatat: 1
 fstat: 1
 fstatfs: 1
-flock: 1
+unlinkat: 1
+sched_setscheduler: 1
+mkdirat: 1
+sendfile: 1
+sysinfo: 1
