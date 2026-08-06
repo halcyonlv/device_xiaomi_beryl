@@ -3,7 +3,7 @@ allow hal_audio_default sysfs_audio_pa:dir search;
 allow hal_audio_default sysfs_audio_pa:file r_file_perms;
 
 allow hal_audio_default persist_data_file:dir search;
-allow hal_audio_default sysfs_batteryinfo:dir search;
+allow hal_audio_default sysfs_batteryinfo:dir r_dir_perms;
 allow hal_audio_default sysfs_power_supply:file r_file_perms;
 set_prop(hal_audio_default, vendor_mtk_audio_prop)
 
