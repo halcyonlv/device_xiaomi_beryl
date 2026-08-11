@@ -2,7 +2,6 @@ import /vendor/etc/init/hw/init.mtkgki.rc
 
 import /vendor/etc/init/nfc-service-tms.rc
 # NFC init start
-import /vendor/etc/init/${ro.boot.product.hardware.sku}/nfc2-service-nxp.rc
 import /vendor/etc/init/${ro.boot.product.hardware.sku}/android.hardware.secure_element@1.2-service-mediatek.rc
 
 # MTK project .rc configure
@@ -310,3 +309,18 @@ service statsd /apex/com.android.os.statsd/bin/statsd
     task_profiles ProcessCapacityHigh HighEnergySaving
     override
     disabled
+
+# NFC service init
+service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc2-service.nxp
+    interface aidl android.hardware.nfc.INfc/default
+    interface aidl vendor.nxp.nxpnfc_aidl.INxpNfc/default
+    class early_hal
+    user nfc
+    group nfc drmrpc system
+    override
+    oneshot
+    disabled
+
+on post-fs && property:ro.boot.hwname=citrine
+    start vendor.nfc_hal_service    
+    
