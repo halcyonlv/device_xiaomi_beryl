@@ -186,7 +186,6 @@ on  property:ro.product.name=citrine_p_global
     write /sys/class/power_supply/battery/country_code 4
 #add for ERP Feature of charge end
 
-<<<<<<< HEAD
 on post-fs-data
 # metis
     chmod 0666 /dev/metis
@@ -324,3 +323,6 @@ service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc2-service.nxp
 on post-fs && property:ro.boot.hwname=citrine
     start vendor.nfc_hal_service    
     
+on boot
+    chown system system /proc/tp_gesture
+    chmod 0664 /proc/tp_gesture

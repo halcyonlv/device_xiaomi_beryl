@@ -19,6 +19,7 @@ namespace impl {
 namespace pixel {
 
 using ::aidl::android::hardware::power::Mode;
+using ::android::base::WriteStringToFile;
 
 bool isDeviceSpecificModeSupported(Mode type, bool* _aidl_return) {
     switch (type) {
@@ -33,12 +34,19 @@ bool isDeviceSpecificModeSupported(Mode type, bool* _aidl_return) {
 bool setDeviceSpecificMode(Mode type, bool enabled) {
     switch (type) {
         case Mode::DOUBLE_TAP_TO_WAKE: {
-            bool ok = ::android::base::WriteStringToFile(enabled ? "1" : "0",
-                                                       TP_GESTURE_PATH);
-            if (!ok) {
-                LOG(ERROR) << "Failed to write dt2w state to " << TP_GESTURE_PATH;
+            if (!WriteStringToFile(enabled ? "1" : "0",
+                                   TP_GESTURE_PATH,
+                                   true)) {
+                LOG(ERROR) << "Failed to write "
+                           << (enabled ? "1" : "0")
+                           << " to " << TP_GESTURE_PATH;
+                return false;
             }
-            return ok;
+
+            LOG(INFO) << "Double Tap to Wake "
+                      << (enabled ? "enabled" : "disabled");
+
+            return true;
         }
         default:
             return false;
