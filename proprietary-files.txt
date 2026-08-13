@@ -31,8 +31,10 @@ vendor/lib64/android.hardware.audio.core-impl-mediatek.so
 vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so
 vendor/lib64/hw/audio.primary.mediatek.so;SYMLINK=vendor/lib64/hw/audio.primary.mt6855.so
 vendor/lib64/hw/audio.r_submix.mediatek.so;SYMLINK=vendor/lib64/hw/audio.r_sumix.mt6855.so
+vendor/lib64/hw/vendor.mediatek.hardware.audio-impl.so
 vendor/lib64/libMtkSpeechEnh.so
 vendor/lib64/lib_iir.so
+vendor/lib64/libaudio_aidl_conversion_common_ndk.so:vendor/lib64/libaudio_aidl_conversion_common_ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
 vendor/lib64/libalsautils.so:vendor/lib64/libalsautils-v32.so;FIX_SONAME
 vendor/lib64/libaudio_param_parser-vnd.so
 vendor/lib64/libaudiocompensationfilter_vendor.so
@@ -60,7 +62,6 @@ vendor/lib64/librt_extamp_intf.so
 vendor/lib64/libsixth.so
 vendor/lib64/libspeech_enh_lib.so;FIX_SONAME
 vendor/lib64/libspeechparser_vendor.so
-vendor/lib64/vendor.mediatek.hardware.audio-V1-ndk.so
 
 # Audio Configurations
 vendor/etc/audio_param/AudioParamOptions_mgvi.xml
@@ -2649,6 +2650,7 @@ vendor/lib64/libpqxmlparser.so
 vendor/lib64/libsdrparser.so
 vendor/lib64/mt6855/libmmlpqImpl.so;SYMLINK=vendor/lib64/libmmlpqImpl.so
 vendor/lib64/mt6855/libpq_cust_base.so;SYMLINK=vendor/lib64/libpq_cust_base.so
+vendor/lib64/mt6855/libpq_sec.so;SYMLINK=vendor/lib64/libpq_sec.so
 vendor/lib64/mt6855/libpqconfig.so;SYMLINK=vendor/lib64/libpqconfig.so
 vendor/lib64/mt6855/libpqparamparser.so;SYMLINK=vendor/lib64/libpqparamparser.so
 vendor/lib64/vendor.mediatek.hardware.mmlpq-V3-ndk.so
@@ -2718,6 +2720,8 @@ vendor/lib64/vendor.mediatek.hardware.mtkradioex.modem-V5-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.mwi-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.network-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.ntn-V1-ndk.so
+vendor/lib64/vendor.mediatek.hardware.netdagent-V1-ndk.so
+vendor/lib64/vendor.mediatek.hardware.netdagent@1.0.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.rcs-V2-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.rsu-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.se-V1-ndk.so
