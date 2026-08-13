@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+DEVICE_PATH := device/xiaomi/beryl
+
 PRODUCT_CHECK_PREBUILT_MAX_PAGE_SIZE := false
 
 # Enforce generic ramdisk allow list
