@@ -175,10 +175,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
     $(DEVICE_PATH)/configs/linker.config.json
 
-# MediaCas
-PRODUCT_PACKAGES += \
-    android.hardware.cas@1.2-service-lazy
-
 # Media (C2)
 PRODUCT_PACKAGES += \
     libcodec2_hidl_plugin:64 \
@@ -244,9 +240,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.usb-service.mediatek \
     android.hardware.usb.gadget-service.mediatek
-
-# Enable audio accessory support
-$(call soong_config_set,android_hardware_mediatek_usb,audio_accessory_supported,true)
 
 # Wifi
 $(call soong_config_set,wpa_supplicant_8,board_wlan_mediatek_stability,true)
