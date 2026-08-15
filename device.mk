@@ -199,6 +199,7 @@ PRODUCT_COPY_FILES += \
 
 # NFC
 PRODUCT_PACKAGES += \
+    android.hardware.nfc-service.nxp \
     com.android.nfc_extras \
     Tag
 
@@ -346,7 +347,8 @@ PRODUCT_PACKAGES += \
     SystemUIOverlayBeryl \
     TelephonyOverlayBeryl \
     TetheringResOverlayBeryl \
-    WifiResOverlayBeryl
+    WifiResOverlayBeryl \
+    NfcOverlayBeryl
 
 PRODUCT_PACKAGES += \
     ApertureOverlay
