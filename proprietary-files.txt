@@ -2306,9 +2306,9 @@ vendor/lib64/libmfido_mitee.so
 vendor/lib64/vendor.xiaomi.hardware.mfidoca-V1-ndk.so
 
 # Fingerprint
-odm/lib64/hw/fingerprint.jiiov.so
+odm/lib64/hw/fingerprint.jiiov.so:vendor/lib64/hw/fingerprint.jiiov.default.so;FIX_SONAME
+vendor/lib64/hw/fingerprint.goodix_fod.so:vendor/lib64/hw/fingerprint.goodix_fod.default.so;FIX_SONAME
 vendor/lib64/anc.hal.so
-vendor/lib64/hw/fingerprint.goodix_fod.so
 vendor/lib64/libgf_hal.so
 vendor/lib64/libmifpext.so
 vendor/lib64/vendor.xiaomi.hardware.fx.tunnel-V1-ndk.so
@@ -2610,11 +2610,14 @@ vendor/lib64/vendor.mediatek.hardware.neuropilot.agent@1.2.so
 vendor/lib64/vendor.mediatek.hardware.neuropilot.neuronservice-V1-ndk.so
 
 # NFC
-vendor/bin/hw/android.hardware.nfc2-service.nxp
+vendor/etc/init/o17pgl/android.hardware.secure_element@1.2-service-mediatek.rc
+vendor/etc/init/o17gl/android.hardware.secure_element@1.2-service-mediatek.rc
 vendor/etc/init/init.miodm_beryl.nfc.rc
-vendor/etc/init/o17gl/nfc2-service-nxp.rc
-vendor/etc/init/o17pgl/nfc2-service-nxp.rc
 vendor/etc/libnfc-nci.conf
+vendor/etc/libnfc-nxp.conf
+vendor/lib64/libnxp_extamp_intf.so
+vendor/lib64/libpn560_fw.so
+vendor/libnfc-nxp_RF.conf
 
 # NVRAM
 vendor/bin/fuelgauged
@@ -2755,6 +2758,10 @@ vendor/etc/init/init.vtservice_aidl.rc
 vendor/etc/smsdbvisitor.xml
 vendor/lib64/hw/vendor.mediatek.hardware.videotelephony-impl.so
 vendor/lib64/vendor.mediatek.hardware.videotelephony-V1-ndk.so
+
+# Secure element
+vendor/bin/hw/android.hardware.secure_element@1.2-service-mediatek
+vendor/etc/init/android.hardware.secure_element@1.2-service-mediatek.rc
 
 # Sensors (citsensor)
 odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl
