@@ -1,7 +1,7 @@
 {
     "Sensors":[
         {
-            "Name": "cpu-little-core1",
+            "Name": "cpu_little1",
             "Type": "CPU",
             "HotThreshold":[
                 "NaN",
@@ -16,7 +16,7 @@
             "Multiplier": 0.001
         },
 	{
-            "Name": "cpu-little-core2",
+            "Name": "cpu_little2",
             "Type": "CPU",
             "HotThreshold":[
                 "NaN",
@@ -31,7 +31,7 @@
             "Multiplier": 0.001
         },
 	{
-            "Name": "cpu-little-core3",
+            "Name": "cpu_little3",
             "Type": "CPU",
             "HotThreshold":[
                 "NaN",
@@ -46,7 +46,7 @@
             "Multiplier": 0.001
         },
 	{
-            "Name": "cpu-little-core4",
+            "Name": "cpu_little4",
             "Type": "CPU",
             "HotThreshold":[
                 "NaN",
@@ -61,7 +61,7 @@
             "Multiplier": 0.001
         },
 	{
-            "Name": "cpu-little-core5",
+            "Name": "cpu_little5",
             "Type": "CPU",
             "HotThreshold":[
                 "NaN",
@@ -76,7 +76,7 @@
             "Multiplier": 0.001
         },
 	{
-            "Name": "cpu-little-core6",
+            "Name": "cpu_little6",
             "Type": "CPU",
             "HotThreshold":[
                 "NaN",
@@ -91,7 +91,7 @@
             "Multiplier": 0.001
         },
 	{
-            "Name": "cpu-little-core7",
+            "Name": "cpu_little7",
             "Type": "CPU",
             "HotThreshold":[
                 "NaN",
@@ -106,7 +106,7 @@
             "Multiplier": 0.001
         },
 	{
-            "Name": "cpu-little-core8",
+            "Name": "cpu_little8",
             "Type": "CPU",
             "HotThreshold":[
                 "NaN",
@@ -121,7 +121,7 @@
             "Multiplier": 0.001
         },
         {
-            "Name": "cpu-big-core1",
+            "Name": "cpu_big1",
             "Type": "CPU",
             "HotThreshold":[
                 "NaN",
@@ -136,7 +136,7 @@
             "Multiplier": 0.001
         },
 	{
-            "Name": "cpu-big-core2",
+            "Name": "cpu_big2",
             "Type": "CPU",
             "HotThreshold":[
                 "NaN",
@@ -151,7 +151,7 @@
             "Multiplier": 0.001
         },
 	{
-            "Name": "cpu-big-core3",
+            "Name": "cpu_big3",
             "Type": "CPU",
             "HotThreshold":[
                 "NaN",
@@ -166,7 +166,7 @@
             "Multiplier": 0.001
         },
 	{
-            "Name": "cpu-big-core4",
+            "Name": "cpu_big4",
             "Type": "CPU",
             "HotThreshold":[
                 "NaN",
@@ -243,6 +243,51 @@
         },
         {
             "Name":"mtk-master-charger",
+            "Type":"BATTERY",
+            "HotThreshold":[
+                "NAN",
+                "NAN",
+                "NAN",
+                50.0,
+                55.0,
+                59.0,
+                60.0
+            ],
+            "VrThreshold":50.0,
+            "Multiplier":0.001
+        },
+        {
+            "Name":"mtk-slave-charger",
+            "Type":"BATTERY",
+            "HotThreshold":[
+                "NAN",
+                "NAN",
+                "NAN",
+                50.0,
+                55.0,
+                59.0,
+                60.0
+            ],
+            "VrThreshold":50.0,
+            "Multiplier":0.001
+        },
+        {
+            "Name":"mtk-mst-div-chg",
+            "Type":"BATTERY",
+            "HotThreshold":[
+                "NAN",
+                "NAN",
+                "NAN",
+                50.0,
+                55.0,
+                59.0,
+                60.0
+            ],
+            "VrThreshold":50.0,
+            "Multiplier":0.001
+        },
+        {
+            "Name":"mtk-slv-div-chg",
             "Type":"BATTERY",
             "HotThreshold":[
                 "NAN",
@@ -427,36 +472,28 @@
     "CoolingDevices": [
         {
             "Name": "cpufreq-cpu0",
-            "Type": "GPU"
+            "Type": "CPU"
         },
         {
             "Name": "cpufreq-cpu6",
-            "Type": "GPU"
+            "Type": "CPU"
         },
         {
-            "Name": "charger-cooler",
-       	    "Type": "BATTERY"
+            "Name": "brightness0-clone",
+            "Type": "DISPLAY"
         },
         {
             "Name": "flashlight_cooler",
-       	    "Type": "CAMERA"
+            "Type": "CAMERA"
         },
         {
-            "Name": "wifi-cooler",
-            "Type": "WIFI"
+            "Name": "charger-cooler",
+            "Type": "BATTERY"
         },
         {
             "Name": "lcd-backlight",
             "Type": "DISPLAY"
         },
-        {
-            "Name": "wifi-cooler",
-            "Type": "WIFI"
-        },
-        {
-            "Name": "flashlight_cooler",
-            "Type": "CAMERA"
-        }
         {
             "Name": "mutt-pa1",
             "Type": "MODEM"
