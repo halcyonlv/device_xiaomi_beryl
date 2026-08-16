@@ -2308,8 +2308,6 @@ vendor/lib64/vendor.xiaomi.hardware.mfidoca-V1-ndk.so
 # Dolby
 vendor/bin/hw/vendor.dolby.dms.service
 vendor/bin/hw/vendor.dolby.media.c2-default-service-dax
-vendor/etc/audio_effects.xml
-vendor/etc/audio_effects_config.xml
 vendor/etc/init/dms-service.rc
 vendor/etc/init/vendor.dolby.media.c2-default-service-dax.rc
 vendor/etc/media_codecs_dolby_audio.xml
@@ -2324,20 +2322,16 @@ vendor/lib64/libdeccfg.so
 vendor/lib64/libdlbdsservice.so
 vendor/lib64/libdlbpreg.so
 vendor/lib64/libdmshal.so
-vendor/lib64/libpqcustutils.so
 vendor/lib64/soundfx/libdlbvolaidl.so
 vendor/lib64/soundfx/libswdapaidl.so
 vendor/lib64/soundfx/libswgamedapaidl.so
 vendor/lib64/vendor.dolby.dms-V1-ndk.so
 vendor/lib64/vendor.dolby.hardware.dms@2.0.so
-vendor/lib/libdapparamstorage.so
-vendor/lib/libdlbpreg.so
-vendor/lib/libdmshal.so
-vendor/lib/libpqcustutils.so
-vendor/lib/soundfx/libdlbvolaidl.so
-vendor/lib/soundfx/libswdapaidl.so
-vendor/lib/soundfx/libswgamedapaidl.so
-vendor/lib/vendor.dolby.dms-V1-ndk.so
+vendor/lib64/soundfx/libaecsw_mtk.so
+vendor/lib64/soundfx/libagc1sw_mtk.so
+vendor/lib64/soundfx/libagc2sw_mtk.so
+vendor/lib64/soundfx/libnssw_mtk.so
+vendor/lib64/soundfx/libpreprocessingaidl_mtk.so
 
 # Fingerprint
 odm/lib64/hw/fingerprint.jiiov.so:vendor/lib64/hw/fingerprint.jiiov.default.so;FIX_SONAME
