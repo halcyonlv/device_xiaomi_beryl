@@ -2,3 +2,11 @@ type hal_touchfeature_xiaomi_default, domain;
 type hal_touchfeature_xiaomi_default_exec, exec_type, file_type, vendor_file_type;
 
 hal_server_domain(hal_touchfeature_xiaomi_default, hal_touchfeature_xiaomi)
+
+add_service(hal_touchfeature_xiaomi_default, hal_touchfeature_xiaomi_service)
+
+allow hal_touchfeature_xiaomi_default touchfeature_device:chr_file rw_file_perms;
+allow hal_touchfeature_xiaomi_default self:capability sys_nice;
+allow hal_touchfeature_xiaomi_default sysfs:file rw_file_perms;
+
+set_prop(hal_touchfeature_xiaomi_default, vendor_touchfeature_prop)
