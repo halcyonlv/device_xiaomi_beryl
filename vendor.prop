@@ -283,7 +283,8 @@ ro.vendor.soc.model.external_name=MT6855
 ro.vendor.soc.model.part_name=MT6855
 
 # Surfaceflinger
-debug.sf.auto_latch_unsignaled=0
+debug.sf.latch_unsignaled=1
+ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 debug.sf.defer_refresh_rate_when_off=1
 debug.sf.enable_hwc_vds=0
 debug.sf.disable_client_composition_cache=0
