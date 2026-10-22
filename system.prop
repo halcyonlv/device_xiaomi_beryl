@@ -66,3 +66,6 @@ ro.property_service.async_persist_writes=true
 
 # Blur
 ro.surface_flinger.supports_background_blur=1
+
+# Halcyon Props
+ro.halcyon.soc.marketname=MediaTek Dimensity 7025 Ultra
