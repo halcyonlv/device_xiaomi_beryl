@@ -394,7 +394,6 @@ PRODUCT_PACKAGES += \
     TetheringResOverlayBeryl \
     WifiResOverlayBeryl \
     NfcOverlayBeryl \
-    UpdaterOverlayBeryl \
     DeviceAsWebcamOverlayBeryl
 
 PRODUCT_PACKAGES += \
